@@ -1,5 +1,0 @@
-package Objectives;
-
-interface Objective {
-
-}
