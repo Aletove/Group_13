@@ -1,0 +1,5 @@
+package Objectives;
+
+interface Objective {
+
+}
