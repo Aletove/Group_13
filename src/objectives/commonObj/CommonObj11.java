@@ -1,11 +1,11 @@
 package objectives.commonObj;
 import game.Player;
+import game.Tile;
 import objectives.*;
 import java.util.ArrayList;
 
-public class CommonObj11 implements Objective{
-	private Player[] hasCompleted;
-	private ArrayList<Integer> points;
+public class CommonObj11 extends Objective{
+	private ArrayList<Player> hasCompleted;
 	
 	
 	/**The constructor generates the array list points,
@@ -13,18 +13,22 @@ public class CommonObj11 implements Objective{
 	 * @param nPlayers
 	 */
 	public CommonObj11(int nPlayers) {
-		hasCompleted = new Player[nPlayers];
-		points=new ArrayList<Integer>();
-		//assign to points in each position the specific amount, based on the number of players.
-		for(int i = 1; i <= nPlayers; i++) {
-			points.add(i-1*2);
-		}
+		super(nPlayers);
+		hasCompleted = new ArrayList<Player>();
 		
 	}
 	
 	@Override
 	public int isCompleted(Player currentPlayer) {
-		// TODO Auto-generated method stub
+		Tile[][] shelf;
+		shelf = currentPlayer.getShelf();
+
+		
+		for(int i = shelf.length; i > 0; i--) {
+			for(int j = shelf[i].length; j > 0; i--) {
+				
+			}
+		}
 		return 0;
 	}
 	

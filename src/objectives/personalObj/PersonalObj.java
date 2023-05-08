@@ -1,7 +1,6 @@
 package objectives.personalObj;
 import game.*;
-import objectives.*;
-public class PersonalObj implements Objective{
+public class PersonalObj{
 	private Tile objMatrix [][];
 
 	public PersonalObj(Tile matrix [][]) {
@@ -15,7 +14,7 @@ public class PersonalObj implements Objective{
 		this.objMatrix = objMatrix;
 	}
 	
-	@Override
+	
 	public int isCompleted(Player currentPlayer) {
 
 		return 0;
