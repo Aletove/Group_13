@@ -2,10 +2,10 @@ package Game;
 
 public class Cell {
 	
-	private int x, y, index;
+	public int x, y, index;
 	//index: 0=unused, 1=2 players, 2=3 players, 3=4 players 
 	
-	private boolean state;
+	public boolean state;
 	
 	Cell cells = new Cell(x, y, state, index);
 	public Cell(int x, int y, boolean state, int index) {
@@ -14,10 +14,7 @@ public class Cell {
 		this.state=state;
 		this.index=index;
 	}
-}
-	public setIndex (Cell cells, int newIndex) {
-		this.index = newIndex;
-	}
+	
 	public boolean isFree(){
 		
 		if (this.cells == null && state == true) {
@@ -27,6 +24,11 @@ public class Cell {
 			return false;
 		}
 			
+	}
+	
+	public void setIndex(int index) {
+		this.index = index;
+		
 	}
 	
 }
