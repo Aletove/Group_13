@@ -152,9 +152,7 @@ public class Board {
 	public void fillBoard(Bag bag) {
 		for(int i=0; i<SIZE; i++) {
 			for(int j=0; j<SIZE; j++) {
-				Cell cella = new Cell()
-				cella.get
-				matrix[i][j] = cella;
+				
 		}	
 	}
 	public void isPickable() {
