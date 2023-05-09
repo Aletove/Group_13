@@ -8,7 +8,7 @@ public class Board {
 
 	private Cell[][] matrix = new Cell[SIZE][SIZE];
 
-	public int x, y, index, nPlayers;
+	private int x, y, index, nPlayers;
 	public int[] picAreaRows[];
 	public int[] pickAreaColumns[];
 	
