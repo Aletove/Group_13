@@ -1,4 +1,4 @@
-package game;
+package Game;
 /**
  * Mancano i commenti di tutto. 
  * @author Aletive
