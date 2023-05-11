@@ -97,23 +97,6 @@ public class Shelf {
 	}
 	
 	/**
-	 * print the shelf
-	 */
-	public String toString(){
-	    String s="";
-	    for(int i=0;i<matrix.length;i++) {
-			for (int j=0;j<matrix[i].length;j++) {
-			    if(matrix[i][j]==null){
-			        s+="0\t";
-			    }else{
-			        s+=matrix[i][j]+"\t";
-			    }
-			}
-			s+="\n";
-		}
-		return s;
-	}
-	/**
 	 * 
 	 * @return the maximum number of empty cells by column
 	 */
@@ -206,5 +189,21 @@ public class Shelf {
         }
         return count;
     }
-
+    /**
+	 * print the shelf
+	 */
+	public String toString(){
+	    String s="";
+	    for(int i=0;i<matrix.length;i++) {
+			for (int j=0;j<matrix[i].length;j++) {
+			    if(matrix[i][j]==null){
+			        s+="0\t";
+			    }else{
+			        s+=matrix[i][j]+"\t";
+			    }
+			}
+			s+="\n";
+		}
+		return s;
+	}
 }
