@@ -10,7 +10,7 @@ public class Shelf {
 	Tile matrix[][];
 	
 	public Shelf() {
-		matrix=new Tile[6][5];
+		matrix=new Tile[rows][columns];
 	}
 	
 	public int NumberOfEmptyCells(){
