@@ -115,6 +115,19 @@ public class Shelf {
 	}
 	/**
 	 * 
+	 * @return the maximum number of empty cells by column
+	 */
+	public int nmaxTileToextraxt() {
+		int cont=0;
+		for(int i=0;i<columns;i++) {
+			if(cont<this.NumberOfEmptyCellsOnColumn(i)) {
+				cont=this.NumberOfEmptyCellsOnColumn(i);
+			}
+		}
+		return cont;
+	}
+	/**
+	 * 
 	 * @param t
 	 * @return the number of adjacent tile passed as parameter
 	 */
