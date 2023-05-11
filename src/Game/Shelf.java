@@ -1,4 +1,7 @@
 package Game;
+
+import java.util.*;
+
 /**
  * Mancano i commenti di tutto. 
  * @author Aletive
@@ -73,9 +76,29 @@ public class Shelf {
 			return false;
 		}
 	}
-	
-	public void fillColumn(int column,Tile tile[]) {
-		
+	/**
+	 * a method that fills the column with the tiles passed
+	 * @param column
+	 * @param tiles
+	 * @return true if the filling of column has done successfully  false
+	 */
+	public boolean fillColumn(int column,ArrayList<Tile> tiles) {
+		if(isPlaceable(column,tiles.size())) {
+			int firstempty=0;
+			for(int i=this.matrix.length-1;i>=0;i--){
+			    if(this.matrix[i][column]==null) {
+			    	firstempty=i;
+			    	break;
+			    }
+			}
+			for(int i=0;i<tiles.size();i++) {
+				this.matrix[firstempty+i][column]=tiles.get(i);
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	/**
