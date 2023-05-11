@@ -95,6 +95,11 @@ public class Shelf {
 		}
 		return s;
 	}
+	/**
+	 * 
+	 * @param t
+	 * @return the number of adjacent tile passed as parameter
+	 */
 	public int adjacentTilescount(Tile t){
         int cont=0;
         for(int i=0;i<6;i++){
@@ -141,6 +146,10 @@ public class Shelf {
         }
         return cont;
     }
+	/**
+	 * 
+	 * @return the total score of adjacent tiles based on the number of the adjacent tiles of the same type. 
+	 */
     public int adjacentTilesScore(){
         int count=0;
         Tile t[]=new Tile[6];;
