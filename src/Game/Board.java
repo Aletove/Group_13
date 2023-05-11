@@ -9,8 +9,8 @@ public class Board {
 	private Cell[][] matrix = new Cell[SIZE][SIZE];
 
 	private int x, y, index, nPlayers;
-	public int[] picAreaRows[];
-	public int[] pickAreaColumns[];
+	private int[] picAreaRows[];
+	private int[] pickAreaColumns[];
 	
 	Bag bag = new Bag();
 
