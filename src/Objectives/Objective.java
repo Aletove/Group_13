@@ -1,5 +1,7 @@
-package Objectives;
+package objectives;
+
+import game.Player;
 
 public interface Objective {
-	public int isCompleted();
+	public int isCompleted(Player currentPlayer);
 }

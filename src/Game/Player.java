@@ -1,6 +1,5 @@
-package Game;
-import Objectives.commonObj.*;
-import Objectives.personalObj.*;
+package game;
+import objectives.personalObj.*;
 public class Player {
 
 	private String name;
@@ -8,7 +7,7 @@ public class Player {
 	public PersonalObj pObjective;
 	public int cObjPoints;
 	public boolean isFirst;
-	// public Shelf shelf;
+	private Shelf pShelf;
 
 	public Player(String newId) {
 		this.id = newId;
@@ -78,6 +77,11 @@ public class Player {
 	public boolean fillShelf() {
 		//return this.shelf.fillColumn(column,tiles);
 		return true;
+	}
+
+	public Tile[][] getShelf() {
+		pShelf.getShelf();
+		return null;
 	}
 	
 

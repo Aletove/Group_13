@@ -1,14 +1,16 @@
-package Game;
+package game;
 /**
  * Mancano i commenti di tutto. 
  * @author Aletive
  *
  */
 public class Shelf {
-	char matrix[][];//cambiare a Tile il tipo
+	
+	const int ncolumn=5;
+	Tile matrix[][];//cambiare a Tile il tipo
 	
 	public Shelf() {
-		matrix=new char[6][5];
+		matrix=new Tile[6][5];//utilizzare delle costanti oppure il metodo .lenght all'interno del codice.
 	}
 	
 	public int NumberOfEmptyCells(){
@@ -49,7 +51,7 @@ public class Shelf {
 		}
 	}
 	
-	public void fillColumn(int column,char tile[]) {
+	public void fillColumn(int column,Tile tile[]) {
 		
 	}
 	
@@ -57,7 +59,7 @@ public class Shelf {
 	    String s="";
 	    for(int i=0;i<6;i++) {
 			for (int j=0;j<5;j++) {
-			    if(matrix[i][j]==0){
+			    if(matrix[i][j]==null){
 			        s+="0\t";
 			    }else{
 			        s+=matrix[i][j]+"\t";
@@ -66,5 +68,9 @@ public class Shelf {
 			s+="\n";
 		}
 		return s;
+	}
+
+	public Tile[][] getShelf() {
+		return matrix;
 	}
 }

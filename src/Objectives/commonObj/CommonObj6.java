@@ -1,5 +1,12 @@
-package Objectives.commonObj;
+package objectives.commonObj;
+import game.Player;
+import objectives.*;
+public class CommonObj6 implements Objective{
 
-public class CommonObj6 {
+	@Override
+	public int isCompleted(Player currentPlayer) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
