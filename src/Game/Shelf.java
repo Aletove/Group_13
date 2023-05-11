@@ -2,15 +2,10 @@ package Game;
 
 import java.util.*;
 
-/**
- * Mancano i commenti di tutto. 
- * @author Aletive
- *
- */
 public class Shelf {
-	final int rows=6;
-	final int columns=5;
-	Tile matrix[][];
+	private final int rows=6;
+	private final int columns=5;
+	private Tile matrix[][];
 	
 	public Shelf() {
 		matrix=new Tile[rows][columns];
