@@ -5,19 +5,19 @@ package game;
  *
  */
 public class Shelf {
-	
-	const int ncolumn=5;
-	Tile matrix[][];//cambiare a Tile il tipo
+	final int rows=6;
+	final int columns=5;
+	Tile matrix[][];
 	
 	public Shelf() {
-		matrix=new Tile[6][5];//utilizzare delle costanti oppure il metodo .lenght all'interno del codice.
+		matrix=new Tile[6][5];
 	}
 	
 	public int NumberOfEmptyCells(){
 		int count=0;
-		for(int i=0;i<6;i++) {
-			for (int j=0;j<5;j++) {
-				if(matrix[i][j]==0) {
+		for(int i=0;i<matrix.length;i++) {
+			for (int j=0;j<matrix[i].length;j++) {
+				if(matrix[i][j]==null) {
 					count++;
 				}
 			}
@@ -26,8 +26,8 @@ public class Shelf {
 	}
 	public int NumberOfEmptyCellsOnColumn(int column){
 	    int count=0;
-	    for (int i=0;i<6;i++){
-	        if(matrix[i][column]==0){
+	    for (int i=0;i<matrix.length;i++){
+	        if(matrix[i][column]==null){
 	            count++;
 	        }
 	    }
@@ -57,8 +57,8 @@ public class Shelf {
 	
 	public String toString(){
 	    String s="";
-	    for(int i=0;i<6;i++) {
-			for (int j=0;j<5;j++) {
+	    for(int i=0;i<matrix.length;i++) {
+			for (int j=0;j<matrix[i].length;j++) {
 			    if(matrix[i][j]==null){
 			        s+="0\t";
 			    }else{
