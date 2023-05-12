@@ -1,50 +1,69 @@
-package game;
 
+
+package Game;
+
+import java.util.ArrayList;
 import java.util.Random;
 
-public class bag {
+public class Bag {
 	//dichiaro gli attributi
-	private Tile[] tileCats;
-	private Tile[] tileBooks;
-	private Tile[] tileGames;
-	private Tile[] tileTrophies;
-	private Tile[] tilePlants;
+	private ArrayList<Tile> tileCats;
+	private ArrayList<Tile> tileBooks;
+	private ArrayList<Tile> tileGames;
+	private ArrayList<Tile> tileFrames;
+	private ArrayList<Tile> tileTrophies;
+	private ArrayList<Tile> tilePlants;
 	
 		 
-	public bag() {
-		//costruisco la classe
-		this.tileCats = new Tile[22];
-		this.tileBooks = new Tile[22];
-		this.tileGames = new Tile[22];
-		this.tileTrophies = new Tile[22];
-		this.tileTrophies = new Tile[22];
+	public Bag() { //costruttore
+		//inizializzo gli array
+		tileCats = new ArrayList<>();
+		tileBooks = new ArrayList<>();
+		tileGames = new ArrayList<>();
+		tileFrames = new ArrayList<Tile>();
+		tileTrophies = new ArrayList<>();
+		tilePlants = new ArrayList<>();
+		
+		for(int i = 0; i<22; i++) { //creo le 22 carte, da inserire nell'array, per ogni tipo di Tile
+			tileCats.add(i);
+			tileBooks.add(i);
+			tileGames.add(i);
+			tileFrames.add(i);
+			tileTrophies.add(i);
+			tilePlants.add(i);
+		}
 		
 	}
-	public  void getTile() {
+	public  Tile getTile() {
 		Random rand = new Random(); //creo random per generare numeri casuali
-		int list = rand.nextInt(5); // genera un numero (da 1 a 5) che indica quale tile pescare
-		Tile[] Tiles; //dichiaro la variabile Tile
+		int list = rand.nextInt(6); // genera un numero (da 1 a 5) che indica quale tile pescare
+		
+		ArrayList<Tile> tiles; //per selezionare la tile scelta
 		switch (list) {
 		case 1:
-			Tiles = tileCats;
+			tiles = tileCats;
 			break;
 		case 2: 
-			Tiles = tileBooks;
+			tiles = tileBooks;
 			break;
 		case 3: 
-			Tiles = tileGames;
+			tiles = tileGames;
 			break;
-		case 4: 
-			Tiles = tileTrophies;
+		case 4:
+			tiles = tileFrames;
 			break;
 		case 5: 
-			Tiles = tilePlants;
+			tiles = tileTrophies;
+			break;
+		case 6: 
+			tiles = tilePlants;
 			break;
 
 		default:
-			//mettere un exception in caso di bag vuota?
+			System.out.println("errore bag vuota");
 			break;
 		}
+		return null;
 	}
 }
 
