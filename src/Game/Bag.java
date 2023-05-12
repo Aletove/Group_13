@@ -20,7 +20,7 @@ public class Bag {
 		tileCats = new ArrayList<>();
 		tileBooks = new ArrayList<>();
 		tileGames = new ArrayList<>();
-		tileFrames = new ArrayList<Tile>();
+		tileFrames = new ArrayList<>();
 		tileTrophies = new ArrayList<>();
 		tilePlants = new ArrayList<>();
 		
