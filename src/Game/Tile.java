@@ -1,22 +1,14 @@
-package game;
 
-public class Tile {
-	String type;
+package Game;
 
-	public Tile(String type) {
-		this.type = type;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-	
-	
-	
-
+public enum Tile {
+	CATS,
+	BOOKS,
+	GAMES,
+	FRAMES,
+	TROPHIES,
+	PLANTS
 }
+
+
+	
