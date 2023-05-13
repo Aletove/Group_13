@@ -1,5 +1,6 @@
 
 
+
 package Game;
 
 import java.util.ArrayList;
@@ -17,20 +18,20 @@ public class Bag {
 		 
 	public Bag() { //costruttore
 		//inizializzo gli array
-		tileCats = new ArrayList<>();
-		tileBooks = new ArrayList<>();
-		tileGames = new ArrayList<>();
-		tileFrames = new ArrayList<>();
-		tileTrophies = new ArrayList<>();
-		tilePlants = new ArrayList<>();
+		tileCats = new ArrayList<Tile>();
+		tileBooks = new ArrayList<Tile>();
+		tileGames = new ArrayList<Tile>();
+		tileFrames = new ArrayList<Tile>();
+		tileTrophies = new ArrayList<Tile>();
+		tilePlants = new ArrayList<Tile>();
 		
-		for(int i = 0; i<22; i++) { //creo le 22 carte, da inserire nell'array, per ogni tipo di Tile
-			tileCats.add(i);
-			tileBooks.add(i);
-			tileGames.add(i);
-			tileFrames.add(i);
-			tileTrophies.add(i);
-			tilePlants.add(i);
+		for(int i = 0 ; i<22; i++) { //creo le 22 carte, da inserire nell'array, per ogni tipo di Tile
+			tileCats.add(Tile.CATS);
+			tileBooks.add(Tile.BOOKS);
+			tileGames.add(Tile.GAMES);
+			tileFrames.add(Tile.FRAMES);
+			tileTrophies.add(Tile.TROPHIES);
+			tilePlants.add(Tile.PLANTS);
 		}
 		
 	}
