@@ -61,7 +61,7 @@ public class Bag {
 			System.out.println("errore bag vuota");
 			break;
 		}
-		return null;
+		return Tile;
 	}
 }
 
