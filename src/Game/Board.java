@@ -31,7 +31,8 @@ public class Board {
 
 	public boolean isPickable(int x, int y) {
 		boolean temp = false;
-		if(matrix[x-1][y] == null  || matrix[x][y-1] == null  || matrix[x+1][y] == null  || matrix[x][y+1] == null) {
+		if(matrix[x-1][y] == null  || matrix[x][y-1] == null  || matrix[x+1][y] == null || matrix[x][y+1] == null 
+				|| matrix[x-1][y] == Tile.EMPTY  || matrix[x][y-1] == Tile.EMPTY  || matrix[x+1][y] == Tile.EMPTY  || matrix[x][y+1] == Tile.EMPTY) {
 			temp = true;
 		}
 
@@ -41,8 +42,10 @@ public class Board {
 	public void pickTiles(int pickAreaRows[], int pickAreaColumns[]) {
 		for(int i=0; i<pickAreaRows.length; i++) {
 			for(int j=0; j<pickAreaColumns.length; j++) {
-				if(!isPickable(i, j)) {
+				if(!isPickable(pickAreaRows[i], pickAreaColumns[j])) {
 					System.out.println("Scelta non valida");
+				}else{
+					matrix[pickAreaRows[i]][pickAreaColumns[j]] = Tile.EMPTY;
 				}
 			}
 		}

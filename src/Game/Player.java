@@ -1,5 +1,5 @@
-package game;
-import objectives.personalObj.*;
+package Game;
+import Objectives.personalObj.*;
 public class Player {
 
 	private String name;
@@ -9,11 +9,17 @@ public class Player {
 	public boolean isFirst;
 	private Shelf pShelf;
 
+	/**
+	 * @param newId
+	 */
 	public Player(String newId) {
 		this.id = newId;
-		//this.shelf=new Shelf();
+		this.pShelf=new Shelf();
 	}
 
+	/**
+	 * @return
+	 */
 	public String getId() {
 		return this.id;
 	}
@@ -31,7 +37,6 @@ public class Player {
 	}
 
 	public int calculateScore() {
-		// TODO: waiting for others
 		int total=0;
 		total+=calculatePObjectiveScore();
 		total+=calculateCommonScore();
@@ -42,41 +47,15 @@ public class Player {
 		return total;
 	}
 	private int calculatePObjectiveScore() {
-		int total=0;
-		/*for( int i=0 ; i<this.pObjective.goalTiles.length;i++) {
-			/*if(this.shelf.isTileFilled(this.pObjective.goalTiles[i].x,this.pObjective.goalTiles[i].y)) {
-				switch(i) {
-					case 0:
-						total+=1;
-						break;
-					case 1:
-						total+=2;
-						break;
-					case 2:
-						total+=4;
-						break;
-					case 3:
-						total+=6;
-						break;
-					case 4:
-						total+=9;
-						break;
-					case 5:
-						total+=12;
-						break;
-				}
-			}
-		}*/
-		return total;
+		return pObjective.isCompleted(this);
 	}
 	
 	public boolean checkShelf() {
-		//return this.shelf.isFull();
-		return true;
+		return this.pShelf.isFull();
 	}
-	public boolean fillShelf() {
-		//return this.shelf.fillColumn(column,tiles);
-		return true;
+	public void fillShelf() {
+		Tile [] ef=new Tile[10000000];
+		this.pShelf.fillColumn(0,ef);
 	}
 
 	public Tile[][] getShelf() {
