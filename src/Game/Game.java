@@ -5,41 +5,38 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Game {
-	    private Player[] players;
+	    private ArrayList<Player> playerList = new ArrayList<>();
 	    private Objective[] commonObjectives;
 	    private Board board;
+	    private int turn=0;
+	    private boolean isLastround;
 
-	    public Game(Player[] players, Objective[] commonObjectives, Board board) {
-	        this.players = players;
-	        this.commonObjectives = commonObjectives;
-	        this.board = board;
-	    }
-
-	    public void match() {
-	        // Shuffling the player array list
-	        ArrayList<Player> playerList = new ArrayList<>();
-	        for (Player player : players) {
-	            playerList.add(player);
+	    public void initGame(Player[] players, Objective[] commonObjectives, Board board) {
+	    	for (Player player : players) {
+	            this.playerList.add(player);
 	        }
-	        Collections.shuffle(playerList);
-
-	        // Associating the chair with the first player of the shuffled array list
-	        Player firstPlayer = playerList.get(0);
-	        board.setChair(firstPlayer);
-
-	        // Start the game
-	        // Implement game logic
+	    	Collections.shuffle(playerList);
+	    	this.commonObjectives = commonObjectives;
+	    	this.board = board;
 	    }
 
-	    public void turn(Player currentPlayer) {
-	        // Implement turn logic for the current player
+	    public Player nextTurn() {
+	    	this.turn += 1;
+	    	int nextPlayerIndex = (this.turn - 1) % playerList.size();
+	    	if(this.isLastround && nextPlayerIndex == 0) throw new Error("PARTITA TERMINATA");
+	    	return this.playerList.get(nextPlayerIndex);
+	    	//funzione che ritorna il player che dovrà giocare
 	    }
 
-	    public boolean pickTiles(int pickAreaRows, int pickAreaColumns, Player currentPlayer) {
-	        // Calling the pickTiles method in the board and handling the result
-	        boolean result = board.pickTiles(pickAreaRows, pickAreaColumns);
-	        // Implement additional logic based on the result
-
-	        return result;
+	    public void match(int pickAreaRows[], int pickAreaColumns[], int shelfColumn) {
+	    	//current player handling
+	    	Player currentPlayer = this.nextTurn();
+	        //pick tiles from the board
+	    	ArrayList<Tile> tiles = board.pickTiles(pickAreaRows, pickAreaColumns);
+	        //put tiles in the shelf
+	    	currentPlayer.getShelf().fillColumn(shelfColumn, tiles);
+	    	if(currentPlayer.getShelf().isFull()) this.isLastround = true;
 	    }
+	    
+	    //funzione per terminare partita e fare il conteggio dei punti
 	}
