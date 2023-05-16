@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class CommonObj2 extends Objective{
-	private ArrayList<Player> hasCompleted;
+	private ArrayList<String> hasCompletedID;
 	
 	
 	
@@ -15,7 +15,7 @@ public class CommonObj2 extends Objective{
 	 */
 	public CommonObj2(int nPlayers) {
 		super(nPlayers);
-		hasCompleted = new ArrayList<Player>();
+		hasCompletedID = new ArrayList<String>();
 		
 		
 	}
@@ -31,17 +31,12 @@ public class CommonObj2 extends Objective{
 		int maxRows = shelf.length;
 		
 		//the following if statement verifies that all the elements in the four vertices are equal
-		if(shelf[0][0].getLogicType().equals(shelf[0][maxColumns].getLogicType()) && shelf[maxRows][0].getLogicType().equals(shelf[0][maxColumns].getLogicType()) && shelf[0][0].getLogicType().equals(shelf[maxRows][maxColumns].getLogicType()) && shelf[0][0].getLogicType() != null) {
-			if(super.notCompletedYet(currentPlayer, hasCompleted)) {
-				hasCompleted.add(currentPlayer);
+		if(shelf[0][0] == shelf[0][maxColumns] && shelf[maxRows][0] == shelf[0][maxColumns] && shelf[0][0] == shelf[maxRows][maxColumns] && shelf[0][0] != null && shelf[0][0] != Tile.EMPTY) {
+			if(super.notCompletedYet(currentPlayer, hasCompletedID)) {
 				return super.pointsMethod();
 			}
 		}
 		
 		return 0;
 	}
-	
-	
-	
-
 }

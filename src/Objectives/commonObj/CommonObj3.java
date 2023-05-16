@@ -1,11 +1,10 @@
 package objectives.commonObj;
-import game.Player;
-import game.Tile;
+import game.*;
 import objectives.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class CommonObj3 extends Objective{
-	private ArrayList<Player> hasCompleted;
+	private ArrayList<String> hasCompletedID;
 	
 	
 	/**The constructor generates the array list points,
@@ -14,23 +13,51 @@ public class CommonObj3 extends Objective{
 	 */
 	public CommonObj3(int nPlayers) {
 		super(nPlayers);
-		hasCompleted = new ArrayList<Player>();
+		hasCompletedID = new ArrayList<String>();
 		
 	}
 	
 	@Override
 	public int isCompleted(Player currentPlayer) {
 		Tile[][] shelf;
+		Set<Tile> tileTypes;
+		int rows, cols;
+		boolean isValidRow;
+		boolean objectiveReached;
 		shelf = currentPlayer.getShelf();
+		tileTypes = new HashSet<>();
+		rows = shelf.length;
+        cols = shelf[0].length;
+		isValidRow = true;
+		objectiveReached = false;
 
-		
-		for(int i = shelf.length; i > 0; i--) {
-			for(int j = shelf[i].length; j > 0; i--) {
-				
-			}
-		}
-		return 0;
+        
+
+        // Check each row
+        for (int i = 0; i < rows; i++) {
+        	// Check each column in the current row
+    		for (int j = 0; j < cols; j++) {
+    			Tile currentTile = grid[i][j];
+    			tileTypes.add(currentTile);
+
+    			// Check if the current row has more than three unique tile types
+    			if (tileTypes.size() > 3) {
+    				isValidRow = false;
+    			}
+    		}
+            // Check if the current row has exactly five tiles and is valid
+            if (&& cols == 5) {
+                System.out.println("Found a valid row: " + i);
+                objectiveReached = true;
+            }
+        }
+
+        // Check if the objective was reached
+        if (objectiveReached) {
+            System.out.println("Objective reached: Four rows formed by 5 tiles of one, two, or three different types.");
+        } else {
+            System.out.println("Objective not reached.");
+        }
 	}
-	
 
 }
