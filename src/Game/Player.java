@@ -7,7 +7,7 @@ public class Player {
 	public PersonalObj pObjective;
 	public int cObjPoints;
 	public boolean isFirst;
-	private Shelf pShelf;
+	public Shelf pShelf;
 
 	/**
 	 * @param newId
@@ -58,9 +58,8 @@ public class Player {
 		this.pShelf.fillColumn(0,ef);
 	}
 
-	public Tile[][] getShelf() {
-		pShelf.getShelf();
-		return null;
+	public Shelf getShelf() {
+		return pShelf;
 	}
 	
 
