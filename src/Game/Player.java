@@ -58,8 +58,9 @@ public class Player {
 		this.pShelf.fillColumn(0,ef);
 	}
 
-	public Shelf getShelf() {
-		return pShelf;
+	public Tile[][] getShelf() {
+		pShelf.getShelf();
+		return null;
 	}
 	
 
