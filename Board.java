@@ -31,7 +31,7 @@ public class Board {
 
 		for(int i=0; i<SIZE; i++) {
 			for(int j=0; j<SIZE; j++) {
-				if(mold[i][j] >= nPlayers) {
+				if(mold[i][j] > nPlayers) {
 					matrix[i][j] = Tile.EMPTY;
 				}
 			}
@@ -46,9 +46,14 @@ public class Board {
 	 */
 	public boolean isPickable(int x, int y) {
 		boolean temp = false;
-		if(matrix[x-1][y] == null  || matrix[x][y-1] == null  || matrix[x+1][y] == null || matrix[x][y+1] == null 
-				|| matrix[x-1][y] == Tile.EMPTY  || matrix[x][y-1] == Tile.EMPTY  || matrix[x+1][y] == Tile.EMPTY  || matrix[x][y+1] == Tile.EMPTY) {
-			temp = true;
+		for (int[] direction : DIRECTIONS) {
+			int newRow = x + direction[0];
+			int newCol = y + direction[1];
+
+			if(matrix[newRow][newCol].equals(null) || matrix[newRow][newCol].equals(Tile.EMPTY)) {
+				temp = true;
+			}
+
 		}
 
 		return temp;
@@ -73,7 +78,9 @@ public class Board {
 			}
 		}
 
-		isEmpty();
+		if(isEmpty()) {
+			fillBoard(boardBag);
+		}
 
 		return picked;
 	}
@@ -95,48 +102,50 @@ public class Board {
 		}
 	}
 
-	private boolean findAdjacent(Tile[][] matrix, int row, int col) {
+	private boolean findAdjacent(int row, int col) {
 		int rows = matrix.length;
 		int cols = matrix[0].length;
+		boolean flag = false;
 
 		// Boundary and tile type check
 		if (row < 0 || row >= rows || col < 0 || col >= cols) {
 			return false;
 		}
+		if(!matrix[row][col].equals(Tile.EMPTY)  && !matrix[row][col].equals(null)) {
+			flag = true;
+		}
+
 		for (int[] direction : DIRECTIONS) {
 			int newRow = row + direction[0];
 			int newCol = col + direction[1];
-	            
-			findAdjacent(matrix, newRow, newCol);
+
+			findAdjacent(newRow, newCol);
 		}
-		return true;
+
+		return flag;
 	}
 
 	/**
 	 * checks the remaining tiles on the board and refills it if there are no adjacent tiles
 	 */
 
-	public void isEmpty() {
+	public boolean isEmpty() {
 		boolean control = false;
-		
-		
+
+
 		for(int i=0; i<SIZE; i++) {
 			for(int j=0; j<SIZE && !control; j++) {
-				if(matrix[i][j] != Tile.EMPTY && matrix[i][j] != null) {
-					/*if((matrix[i-1][j] != null || matrix[i-1][j] != Tile.EMPTY) 
-							|| (matrix[i][j-1] != null || matrix[i][j-1] != Tile.EMPTY) 
-							|| (matrix[i+1][j] != null || matrix[i+1][j] != Tile.EMPTY) 
-							|| (matrix[i][j+1] != null || matrix[i][j+1] != Tile.EMPTY)) {*/
 
-						control = findAdjacent(matrix, i, j);
-				}
+				control = findAdjacent(i, j);
+
 			}
 		}
-		
-		
+
+
 		if(control == false) {
 			fillBoard(boardBag);
 		}
+		return control;
 
 	}
 
