@@ -5,7 +5,7 @@ public class Player {
 	private String name;
 	private final int id;
 	private PersonalObj pGoal;
-	private int cGoalPoints;
+	private int cGoalPoints
 	private boolean isFirst;
 	private Shelf pShelf;
 
