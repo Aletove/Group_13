@@ -1,13 +1,11 @@
 package Game;
-/**
- * Mancano i commenti di tutto. 
- * @author Aletive
- *
- */
+
+import java.util.*;
+
 public class Shelf {
-	final int rows=6;
-	final int columns=5;
-	Tile matrix[][];
+	private final int rows=6;
+	private final int columns=5;
+	private Tile matrix[][];
 	
 	public Shelf() {
 		matrix=new Tile[rows][columns];
@@ -73,14 +71,103 @@ public class Shelf {
 			return false;
 		}
 	}
-	
-	public void fillColumn(int column,Tile tile[]) {
-		
+	/**
+	 * a method that fills the column with the tiles passed
+	 * @param column
+	 * @param tiles
+	 * @return true if the filling of column has done successfully  false
+	 */
+	public boolean fillColumn(int column,ArrayList<Tile> tiles) {
+		if(isPlaceable(column,tiles.size())) {
+			int firstempty=0;
+			for(int i=this.matrix.length-1;i>=0;i--){
+			    if(this.matrix[i][column]==null) {
+			    	firstempty=i;
+			    	break;
+			    }
+			}
+			for(int i=0;i<tiles.size();i++) {
+				this.matrix[firstempty+i][column]=tiles.get(i);
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	/**
-	 * print the shelf
+	 * 
+	 * @return the maximum number of empty cells by column
 	 */
+	public int nmaxTileToextraxt() {
+		int cont=0;
+		for(int i=0;i<columns;i++) {
+			if(cont<this.NumberOfEmptyCellsOnColumn(i)) {
+				cont=this.NumberOfEmptyCellsOnColumn(i);
+			}
+		}
+		return cont;
+	}
+	
+	/**
+	 * a method that use the DFS algorithm,
+	 * a recursive algorithm that uses the backtracking principle ,
+	 * to calculate the score obtained
+	 * @return the score obtained
+	 */
+	
+	public int adjacentTilesScore() {
+	    int score = 0;
+	    boolean[][] discovered = new boolean[6][5]; // a boolean used for the DFS algorithm to mark the counted cell
+	    for(int i=0;i<6;i++) { //initialize the boolean matrix to false
+	    	for(int j=0;j<5;j++) {
+	    		discovered[i][j]=false;
+	    	}
+	    }
+	    Tile [] tile = new Tile[] {Tile.CATS,Tile.BOOKS,Tile.FRAMES,Tile.GAMES,Tile.PLANTS,Tile.TROPHIES};// an array that contain all the types of tile
+	    for(int i=0;i<tile.length;i++) {//a loop that repeat the following operations for all type of tile
+	    	for (int j = 0; j < matrix.length; j++) {
+		        for (int k = 0; k < matrix[j].length; k++) {
+		            if (matrix[j][k].equals(tile[i]) && !discovered[j][k]) { //find the cell that contain the same type of tile contained in tile[i] and not counted yet
+		                int groupSize = dfs(j, k, tile[i], discovered); //groupSize contain the number of adjacent tile on the same group that obtained from the dfs method;
+		                if (groupSize == 3) {
+		                    score += 2;
+		                } else if (groupSize == 4) {
+		                    score += 3;
+		                } else if (groupSize == 5) {
+		                    score += 5;
+		                } else if (groupSize >= 6) {
+		                    score += 8;
+		                }
+		            }
+		        }
+		    }	
+	    }
+	    return score;
+	}
+	/**
+	 * the method that implement the DFS algorithm
+	 * @param i contain the position of the current tile
+	 * @param j contain the position of the current tile
+	 * @param tile the tile founded by the method adjacentTilesScore on the first round of the recursion
+	 * @param discovered a matrix of boolean to mark the cell counted
+	 * @return the number of adjacent tile on the same group
+	 */
+	private int dfs(int i, int j, Tile tile, boolean[][] discovered) {
+		/*the base condition of the recursion method that return 0 if the position is not available on the matrix
+			or the new cell not contain the same type of the tile, or the cell is already counted
+		 * */
+	    if (i < 0 || i >= rows || j < 0 || j >= columns || !(matrix[i][j].equals(tile)) || discovered[i][j]) { 
+	    	return 0;
+	    }
+	    discovered[i][j] = true; //mark the current cell as discovered 
+	    /*if the cell contain the same type of the tile contained on the precedent cell
+	     * return 1+ the number of tile of the adjacent tile and call the same method to do the same check
+	     */
+	    return 1 + dfs(i - 1, j, tile, discovered) + dfs(i + 1, j, tile, discovered)
+	            + dfs(i, j - 1, tile, discovered) + dfs(i, j + 1, tile, discovered);
+	}
 	public String toString(){
 	    String s="";
 	    for(int i=0;i<matrix.length;i++) {
@@ -95,76 +182,4 @@ public class Shelf {
 		}
 		return s;
 	}
-	public int adjacentTilescount(Tile t){
-        int cont=0;
-        for(int i=0;i<6;i++){
-            for(int j=0;j<5;j++){
-                if(this.matrix[i][j].equals(t)){
-                    if(i==0&&j==0){
-                        if(this.matrix[i][j].equals(this.matrix[i][j+1]) || this.matrix[i][j].equals(this.matrix[i+1][j]))
-                            cont++;
-                    }
-                    if(i==0&&j==columns-1){
-                        if(this.matrix[i][j].equals(this.matrix[i][j-1]) || this.matrix[i][j].equals(this.matrix[i+1][j]))
-                            cont++;
-                    }
-                    if(i==rows-1&&j==0){
-                        if(this.matrix[i][j].equals(this.matrix[i-1][j]) || this.matrix[i][j].equals(this.matrix[i][j+1]))
-                            cont++;
-                    }
-                    if(i==rows-1&&j==columns-1){
-                        if(this.matrix[i][j].equals(this.matrix[i][j-1]) || this.matrix[i][j].equals(this.matrix[i-1][j]))
-                            cont++;
-                    }
-                    if(i==0&&j>0&&j<columns-1){
-                        if(this.matrix[i][j].equals(this.matrix[i+1][j]) || this.matrix[i][j].equals(this.matrix[i][j-1]) || this.matrix[i][j].equals(this.matrix[i][j+1]))
-                            cont++;
-                    }
-                    if(i==rows-1&&j>0&&j<columns-1){
-                        if(this.matrix[i][j].equals(this.matrix[i-1][j]) || this.matrix[i][j].equals(this.matrix[i][j-1]) || this.matrix[i][j].equals(this.matrix[i][j+1]))
-                            cont++;
-                    }
-                    if(j==0&&i>0&&i<rows-1){
-                        if(this.matrix[i][j].equals(this.matrix[i][j+1]) || this.matrix[i][j].equals(this.matrix[i-1][j]) || this.matrix[i][j].equals(this.matrix[i+1][j]))
-                            cont++;
-                    }
-                    if(j==columns-1&&i>0&&i<rows-1){
-                        if(this.matrix[i][j].equals(this.matrix[i][j-1]) || this.matrix[i][j].equals(this.matrix[i-1][j]) || this.matrix[i][j].equals(this.matrix[i+1][j]))
-                            cont++;
-                    }
-                    if(i>0&&j>0&&i<rows-1&&j<columns-1){
-                        if(this.matrix[i][j].equals(this.matrix[i][j+1]) ||this.matrix[i][j].equals(this.matrix[i][j-1]) || this.matrix[i][j].equals(this.matrix[i+1][j]) ||this.matrix[i][j].equals(this.matrix[i-1][j]))
-                            cont++;
-                    }
-                }
-            }
-        }
-        return cont;
-    }
-    public int adjacentTilesScore(){
-        int count=0;
-        Tile t[]=new Tile[6];;
-        c[0]='r';
-        c[1]='c';
-        c[2]='t';
-        c[3]='g';
-        c[4]='l';
-        c[5]='b';
-        for(int i=0;i<6;i++){
-            if(adjacentTilescount(t[i])==3){
-                count+=2;
-            }
-            if(adjacentTilescount(t[i])==4){
-                count+=3;
-            }
-            if(adjacentTilescount(t[i])==5){
-                count+=5;
-            }
-            if(adjacentTilescount(t[i])>=6){
-                count+=8;
-            }
-        }
-        return count;
-    }
-
 }

@@ -1,20 +1,20 @@
-package objectives.commonObj;
-import game.Player;
-import game.Tile;
-import objectives.*;
-import java.util.ArrayList;
+package goals.commonGoal;
+import game.*;
+import goals.*;
+import java.util.*;
 
-public class CommonObj6 extends Objective{
-	private ArrayList<Player> hasCompleted;
+public class CommonGoal5 extends Goal{
+	private ArrayList<String> hasCompletedID;
+
 	
 	
 	/**The constructor generates the array list points,
 	 * based on the number of players.
 	 * @param nPlayers
 	 */
-	public CommonObj6(int nPlayers) {
+	public CommonGoal5(int nPlayers) {
 		super(nPlayers);
-		hasCompleted = new ArrayList<Player>();
+		hasCompletedID = new ArrayList<String>();
 		
 	}
 	

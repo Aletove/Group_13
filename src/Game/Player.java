@@ -1,88 +1,110 @@
-package game;
-import objectives.personalObj.*;
+package Game;
+import personalObj.*;
 public class Player {
 
 	private String name;
-	private final String id;
-	public PersonalObj pObjective;
-	public int cObjPoints;
-	public boolean isFirst;
+	private final int id;
+	private PersonalObj pGoal;
+	private int cGoalPoints
+	private boolean isFirst;
 	private Shelf pShelf;
 
-	public Player(String newId) {
-		this.id = newId;
-		//this.shelf=new Shelf();
+	/**
+	 * @author Maria Lamara
+	 * The constructor define player
+	 * @param id player
+	 * @param name player
+	 * @param pGoal player
+	 */
+	
+	public Player(int id, String name, PersonalObj pGoal) {
+		this.id = id;
+		this.pShelf = new Shelf();
+		this.name = name;
+		this.pGoal = pGoal;
+		cGoalPoints = 0;
 	}
 
-	public String getId() {
+	/**
+	 * 
+	 * @return
+	 */
+	public int getId() {
 		return this.id;
-	}
-
-	public void setName(String newName) {
-		this.name = newName;
 	}
 
 	public String getName() {
 		return this.name;
 	}
 
-	public void setIsFirst(boolean newIsFirst) {
-		this.isFirst = newIsFirst;
+	public void setIsFirst(boolean isFirst) {
+		this.isFirst = isFirst;
 	}
 
-	public int calculateScore() {
-		// TODO: waiting for others
-		int total=0;
-		total+=calculatePObjectiveScore();
-		total+=calculateCommonScore();
+	public int getCGoalPoints() {
+		return cGoalPoints;
+	}
+
+	public void setCGoalPoints(int cGoalPoints) {
+		this.cGoalPoints = cGoalPoints;
+	}
+
+	public int totalPoints() {
+		int total = 0;
+		total += pGoalPoints();
+		total += cGoalPoints;
+		total += pShelf.adjacentTilesScore();
 		return total;
 	}
-	private int calculateCommonScore() {
-		int total=0;
-		return total;
-	}
-	private int calculatePObjectiveScore() {
-		int total=0;
-		/*for( int i=0 ; i<this.pObjective.goalTiles.length;i++) {
-			/*if(this.shelf.isTileFilled(this.pObjective.goalTiles[i].x,this.pObjective.goalTiles[i].y)) {
-				switch(i) {
-					case 0:
-						total+=1;
-						break;
-					case 1:
-						total+=2;
-						break;
-					case 2:
-						total+=4;
-						break;
-					case 3:
-						total+=6;
-						break;
-					case 4:
-						total+=9;
-						break;
-					case 5:
-						total+=12;
-						break;
+
+	private int pGoalPoints() {
+		Tile[][] matrix = pShelf.getShelf();
+		int rows = matrix.length;
+		int cols = matrix[0].length;
+		int cont = 0;
+		int points=0;
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++) {
+				if (matrix[i][j].equals(pGoal[i][j]) && !pGoal[i][j].equals(Tile.EMPTY)) {
+					cont++;
 				}
 			}
-		}*/
-		return total;
+		}
+		switch (cont) {
+		case 1:
+			points += 1;
+			break;
+		case 2:
+			points += 2;
+			break;
+		case 3:
+			points += 4;
+			break;
+		case 4:
+			points += 6;
+			break;
+		case 5:
+			points += 9;
+			break;
+		case 6:
+			points += 12;
+			break;
+		default: 
+			System.out.println("There is not any tile matching the personal goal card.");
+		}
+		return points;
 	}
-	
+
 	public boolean checkShelf() {
-		//return this.shelf.isFull();
-		return true;
+		return this.pShelf.isFull();
 	}
-	public boolean fillShelf() {
-		//return this.shelf.fillColumn(column,tiles);
-		return true;
+
+	public void fillShelfColumn(int col,Tile [] tiles) {
+		pShelf.fillColumn(col,tiles);
 	}
 
 	public Tile[][] getShelf() {
-		pShelf.getShelf();
-		return null;
+		return pShelf.getShelf();
 	}
-	
 
 }
