@@ -45,15 +45,15 @@ public class Board {
 	 * @return true if tiles can be picked
 	 */
 	public boolean isPickable(int[] x, int[] y) {
-		boolean temp = false;
+		boolean temp = true;
 		for(int i=0; i<x.length; i++) {
 			for (int j=0; j<y.length; j++) {
 				for (int[] direction : DIRECTIONS) {
 					int newRow = x[i] + direction[0];
 					int newCol = y[j] + direction[1];
 
-					if(matrix[newRow][newCol].equals(null) || matrix[newRow][newCol].equals(Tile.EMPTY)) {
-						temp = true;
+					if(!matrix[newRow][newCol].equals(null) || !matrix[newRow][newCol].equals(Tile.EMPTY)) {
+						temp = false;
 					}
 
 				}
