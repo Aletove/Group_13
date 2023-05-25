@@ -44,19 +44,23 @@ public class Board {
 	 * @param y
 	 * @return true if tiles can be picked
 	 */
-	public boolean isPickable(int x, int y) {
+	public boolean isPickable(int[] x, int[] y) {
 		boolean temp = false;
-		for (int[] direction : DIRECTIONS) {
-			int newRow = x + direction[0];
-			int newCol = y + direction[1];
+		for(int i=0; i<x.length; i++) {
+			for (int j=0; j<y.length; j++) {
+				for (int[] direction : DIRECTIONS) {
+					int newRow = x[i] + direction[0];
+					int newCol = y[j] + direction[1];
 
-			if(matrix[newRow][newCol].equals(null) || matrix[newRow][newCol].equals(Tile.EMPTY)) {
-				temp = true;
+					if(matrix[newRow][newCol].equals(null) || matrix[newRow][newCol].equals(Tile.EMPTY)) {
+						temp = true;
+					}
+
+				}
 			}
-
 		}
-
 		return temp;
+
 	}	
 
 	/**
@@ -67,9 +71,9 @@ public class Board {
 	 */
 	public ArrayList<Tile> pickTiles(int pickAreaRows[], int pickAreaColumns[]) {
 		ArrayList<Tile> picked = new ArrayList<Tile>();
+		if(isPickable(pickAreaRows, pickAreaColumns)) {
 		for(int i=0; i<pickAreaRows.length; i++) {
 			for(int j=0; j<pickAreaColumns.length; j++) {
-				if(isPickable(pickAreaRows[i], pickAreaColumns[j])) {
 
 					picked.add(matrix[pickAreaRows[i]][pickAreaColumns[j]]);
 
