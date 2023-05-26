@@ -4,7 +4,7 @@ import goals.*;
 import java.util.*;
 
 public class CommonGoal0 extends Goal{
-	private ArrayList<String> hasCompletedID;
+	private ArrayList<Integer> hasCompletedID;
 	private static final int[][] DIRECTIONS = {// Directions: top, down, left, right
 			{-1, 0},
 			{1, 0}, 
@@ -20,7 +20,7 @@ public class CommonGoal0 extends Goal{
 	 */
 	public CommonGoal0(int nPlayers) {
 		super(nPlayers);
-		hasCompletedID = new ArrayList<String>();
+		hasCompletedID = new ArrayList<Integer>();
 		
 	}
 	
@@ -42,7 +42,7 @@ public class CommonGoal0 extends Goal{
                
             	Tile targetType = shelf[i][j]; // Tile type that we are looking for
                     
-            	currentGroup.clear(); // clears the current group of Tiles from all added elements before
+            	currentGroup.clear(); // Clears the current group of Tiles from all added elements before
                     
             	// Executes findAdjacent to find the group of adjacent tiles of the same type
                 findAdjacent(shelf, i, j, targetType, currentGroup);
@@ -65,7 +65,7 @@ public class CommonGoal0 extends Goal{
 	
 	
 	/**
-	 * this method uses an implementation of Depth - first research to find groups of adjacent tiles
+	 * This method uses an implementation of Depth - first research to find groups of adjacent tiles
 	 * @param grid the shelf used in the method
 	 * @param row x coordinate of the tile
 	 * @param col y coordinate of the tile
@@ -81,7 +81,7 @@ public class CommonGoal0 extends Goal{
 			return;
 		}
 	        
-		String position = row + "-" + col; //The format of the position is the same in all the groups
+		String position = row + "-" + col; // The format of the position is the same in all the groups
 	        
 		
 		if (currentGroup.contains(position)) {// Checks if the tile has already been found
