@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 public class Shelf {
 	private final int rows=6;
 	private final int columns=5;
@@ -75,17 +77,17 @@ public class Shelf {
 	 * @param tiles
 	 * @return true if the filling of column has done successfully  false
 	 */
-	public boolean fillColumn(int column,Tile [] tiles) {
-		if(isPlaceable(column,tiles.length)) {
+	public boolean fillColumn(int column, ArrayList<Tile> tiles) {
+		if(isPlaceable(column,tiles.size())) {
 			int firstempty=0;
-			for(int i=this.matrix.length-1;i>=0;i--){
-			    if(this.matrix[i][column]==null) {
+			//searches for the first empty element in the specified column
+			for(int i = 0; i < matrix.length; i++){
+			    if(this.matrix[i][column].equals(null)) {
 			    	firstempty=i;
-			    	break;
 			    }
 			}
-			for(int i=0;i<tiles.length;i++) {
-				this.matrix[firstempty+i][column]=tiles[i];
+			for(int i=0;i<tiles.size();i++) {
+				this.matrix[firstempty+i][column]=tiles.remove(i);
 			}
 			return true;
 		}
@@ -96,16 +98,19 @@ public class Shelf {
 	
 	/**
 	 * 
-	 * @return the maximum number of empty cells by column
+	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. in the second element we have the number of tiles
 	 */
-	public int nmaxTileToextraxt() {
+	public int[] nMaxTiles() {
 		int cont=0;
+		int colCon[] = new int[2];
 		for(int i=0;i<columns;i++) {
 			if(cont<this.NumberOfEmptyCellsOnColumn(i)) {
 				cont=this.NumberOfEmptyCellsOnColumn(i);
+				colCon[0] = i;
+				colCon[1] = cont;
 			}
 		}
-		return cont;
+		return colCon;
 	}
 	
 	/**
@@ -171,13 +176,16 @@ public class Shelf {
 	@Override
 	public String toString(){
 	    String s="";
+	    
+	    //build of the first row with all the indexs
+		for (int j=0;j<matrix[0].length;j++) {
+			s+=j+"\t";
+		}
+		s+="\n";	
+		//build of the rest of the matrix in the string
 	    for(int i=0;i<matrix.length;i++) {
 			for (int j=0;j<matrix[i].length;j++) {
-			    if(matrix[i][j]==null){
-			        s+="0\t";
-			    }else{
-			        s+=matrix[i][j]+"\t";
-			    }
+				s+=matrix[i][j]+"\t";
 			}
 			s+="\n";
 		}
