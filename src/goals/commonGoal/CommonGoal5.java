@@ -9,6 +9,7 @@ public class CommonGoal5 extends Goal{
 	
 	/**The constructor generates the array list points,
 	 * based on the number of players.
+	 * @author Giuseppe Luisi
 	 * @param nPlayers
 	 */
 	public CommonGoal5(int nPlayers) {
