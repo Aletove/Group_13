@@ -1,6 +1,6 @@
-package Game;
+package game;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Shelf {
 	private final int rows=6;
@@ -9,9 +9,14 @@ public class Shelf {
 	
 	public Shelf() {
 		matrix=new Tile[rows][columns];
+		for(int i=0;i<matrix.length;i++) {
+			for(int j=0;j<matrix[i].length;i++) {
+				matrix[i][j]=Tile.EMPTY;
+			}
+		}
 	}
 	/**
-	 * 
+	 *
 	 * @return the matrix of shelf
 	 */
 	public Tile[][] getShelf() {
@@ -25,7 +30,7 @@ public class Shelf {
 		int count=0;
 		for(int i=0;i<matrix.length;i++) {
 			for (int j=0;j<matrix[i].length;j++) {
-				if(matrix[i][j]==null) {
+				if(matrix[i][j].equals(Tile.EMPTY)) {
 					count++;
 				}
 			}
@@ -40,7 +45,7 @@ public class Shelf {
 	public int NumberOfEmptyCellsOnColumn(int column){
 	    int count=0;
 	    for (int i=0;i<matrix.length;i++){
-	        if(matrix[i][column]==null){
+	        if(matrix[i][column].equals(Tile.EMPTY)){
 	            count++;
 	        }
 	    }
@@ -75,19 +80,19 @@ public class Shelf {
 	 * a method that fills the column with the tiles passed
 	 * @param column
 	 * @param tiles
-	 * @return true if the filling of column has done successfully  false
+	 * @return true if the filling of column has been done successfully  false
 	 */
-	public boolean fillColumn(int column,ArrayList<Tile> tiles) {
+	public boolean fillColumn(int column, ArrayList<Tile> tiles) {
 		if(isPlaceable(column,tiles.size())) {
 			int firstempty=0;
-			for(int i=this.matrix.length-1;i>=0;i--){
-			    if(this.matrix[i][column]==null) {
+			//searches for the first empty element in the specified column
+			for(int i = 0; i < matrix.length; i++){
+			    if(this.matrix[i][column].equals(Tile.EMPTY)) {
 			    	firstempty=i;
-			    	break;
 			    }
 			}
 			for(int i=0;i<tiles.size();i++) {
-				this.matrix[firstempty+i][column]=tiles.get(i);
+				this.matrix[firstempty+i][column]=tiles.remove(i);
 			}
 			return true;
 		}
@@ -98,16 +103,22 @@ public class Shelf {
 	
 	/**
 	 * 
-	 * @return the maximum number of empty cells by column
+	 * @return an array of two positions, in the first element we have the column with the maximum number of empty cells. in the second element we have the number of empty tiles if it is smaller than 3.
 	 */
-	public int nmaxTileToextraxt() {
+	public int[] nMaxTiles() {
 		int cont=0;
+		int colCon[] = new int[2];
 		for(int i=0;i<columns;i++) {
 			if(cont<this.NumberOfEmptyCellsOnColumn(i)) {
 				cont=this.NumberOfEmptyCellsOnColumn(i);
+				colCon[0] = i;
+				colCon[1] = cont;
 			}
 		}
-		return cont;
+		if(colCon[1] > 3) {
+    		colCon[1] = 3;
+    	}
+		return colCon;
 	}
 	
 	/**
@@ -125,7 +136,7 @@ public class Shelf {
 	    		discovered[i][j]=false;
 	    	}
 	    }
-	    Tile [] tile = new Tile[] {Tile.CATS,Tile.BOOKS,Tile.FRAMES,Tile.GAMES,Tile.PLANTS,Tile.TROPHIES};// an array that contain all the types of tile
+	    Tile [] tile = new Tile[] {Tile.CATS,Tile.BOOKS,Tile.FRAMES,Tile.GAMES,Tile.PLANTS,Tile.TROPH};// an array that contain all the types of tile
 	    for(int i=0;i<tile.length;i++) {//a loop that repeat the following operations for all type of tile
 	    	for (int j = 0; j < matrix.length; j++) {
 		        for (int k = 0; k < matrix[j].length; k++) {
@@ -168,15 +179,21 @@ public class Shelf {
 	    return 1 + dfs(i - 1, j, tile, discovered) + dfs(i + 1, j, tile, discovered)
 	            + dfs(i, j - 1, tile, discovered) + dfs(i, j + 1, tile, discovered);
 	}
+	
+	
+	@Override
 	public String toString(){
 	    String s="";
+	    
+	    //build of the first row with all the indexs
+		for (int j=0;j<matrix[0].length;j++) {
+			s+=j+"\t";
+		}
+		s+="\n";	
+		//build of the rest of the matrix in the string
 	    for(int i=0;i<matrix.length;i++) {
 			for (int j=0;j<matrix[i].length;j++) {
-			    if(matrix[i][j]==null){
-			        s+="0\t";
-			    }else{
-			        s+=matrix[i][j]+"\t";
-			    }
+				s+=matrix[i][j]+"\t";
 			}
 			s+="\n";
 		}

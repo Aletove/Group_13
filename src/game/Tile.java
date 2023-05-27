@@ -1,5 +1,5 @@
 
-package Game;
+package game;
 
 public enum Tile {
 	CATS,
@@ -7,7 +7,8 @@ public enum Tile {
 	GAMES,
 	FRAMES,
 	TROPHIES,
-	PLANTS
+	PLANTS,
+	EMPTY
 }
 
 

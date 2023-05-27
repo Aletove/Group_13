@@ -23,7 +23,7 @@ public abstract class Goal {
 	/**
 	 * 
 	 * @param currentPlayer
-	 * @return true if the player has not completed the common objective yet
+	 * @return the points if the player completes the goal, it returns 0
 	 */
 	public abstract int isCompleted(Player currentPlayer);
 	
@@ -34,8 +34,8 @@ public abstract class Goal {
 	 * @param hasCompletedID arraylist, contains the players ID that have completed the common objective
 	 * @return true if the player has not completed the common objective yet
 	 */
-	public boolean notCompletedYet(Player currentPlayer, ArrayList<String> hasCompletedID) {
-		Iterator<String> it = hasCompletedID.iterator();
+	public boolean notCompletedYet(Player currentPlayer, ArrayList<Integer> hasCompletedID) {
+		Iterator<Integer> it = hasCompletedID.iterator();
 		boolean flag = false;
 		while(it.hasNext() && flag) {
 			if(it.next().equals(currentPlayer.getId())) {

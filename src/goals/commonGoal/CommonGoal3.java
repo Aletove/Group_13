@@ -4,7 +4,7 @@ import goals.*;
 import java.util.*;
 
 public class CommonGoal3 extends Goal{
-	private ArrayList<String> hasCompletedID;
+	private ArrayList<Integer> hasCompletedID;
 
 	
 	
@@ -14,7 +14,7 @@ public class CommonGoal3 extends Goal{
 	 */
 	public CommonGoal3(int nPlayers) {
 		super(nPlayers);
-		hasCompletedID = new ArrayList<String>();
+		hasCompletedID = new ArrayList<Integer>();
 		
 	}
 	

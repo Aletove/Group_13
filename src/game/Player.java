@@ -1,11 +1,13 @@
-package Game;
-import personalObj.*;
+package game;
+
+import java.util.ArrayList;
+
 public class Player {
 
 	private String name;
 	private final int id;
-	private PersonalObj pGoal;
-	private int cGoalPoints
+	private Tile [][] pGoal;
+	private int cGoalPoints;
 	private boolean isFirst;
 	private Shelf pShelf;
 
@@ -17,7 +19,7 @@ public class Player {
 	 * @param pGoal player
 	 */
 	
-	public Player(int id, String name, PersonalObj pGoal) {
+	public Player(int id, String name, Tile [][] pGoal) {
 		this.id = id;
 		this.pShelf = new Shelf();
 		this.name = name;
@@ -40,7 +42,9 @@ public class Player {
 	public void setIsFirst(boolean isFirst) {
 		this.isFirst = isFirst;
 	}
-
+	public boolean isFirst() {
+		return isFirst;
+	}
 	public int getCGoalPoints() {
 		return cGoalPoints;
 	}
@@ -94,17 +98,40 @@ public class Player {
 		}
 		return points;
 	}
-
+	/**
+	 * 
+	 * @return true if the shelf is full
+	 */
 	public boolean checkShelf() {
-		return this.pShelf.isFull();
+		return pShelf.isFull();
+	}
+	
+	/**
+	 * 
+	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. in the second element we have the number of tiles
+	 */
+	public int[] nMaxTiles() {
+		return pShelf.nMaxTiles();
 	}
 
-	public void fillShelfColumn(int col,Tile [] tiles) {
-		pShelf.fillColumn(col,tiles);
+	/**
+	 * a method that fills the column with the tiles passed
+	 * @param column
+	 * @param tiles
+	 * @return true if column has been filled correctly, otherwise false
+	 */
+	public boolean fillShelfColumn(int col, ArrayList<Tile> tiles) {
+		return pShelf.fillColumn(col,tiles);
 	}
 
 	public Tile[][] getShelf() {
 		return pShelf.getShelf();
 	}
+
+	public String printShelf() {
+		return pShelf.toString();
+	}
+
+	
 
 }
