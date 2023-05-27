@@ -9,9 +9,14 @@ public class Shelf {
 	
 	public Shelf() {
 		matrix=new Tile[rows][columns];
+		for(int i=0;i<matrix.length;i++) {
+			for(int j=0;j<matrix[i].length;i++) {
+				matrix[i][j]=Tile.EMPTY;
+			}
+		}
 	}
 	/**
-	 * 
+	 *
 	 * @return the matrix of shelf
 	 */
 	public Tile[][] getShelf() {
@@ -25,7 +30,7 @@ public class Shelf {
 		int count=0;
 		for(int i=0;i<matrix.length;i++) {
 			for (int j=0;j<matrix[i].length;j++) {
-				if(matrix[i][j]==null) {
+				if(matrix[i][j].equals(Tile.EMPTY)) {
 					count++;
 				}
 			}
@@ -40,7 +45,7 @@ public class Shelf {
 	public int NumberOfEmptyCellsOnColumn(int column){
 	    int count=0;
 	    for (int i=0;i<matrix.length;i++){
-	        if(matrix[i][column]==null){
+	        if(matrix[i][column].equals(Tile.EMPTY)){
 	            count++;
 	        }
 	    }
@@ -82,7 +87,7 @@ public class Shelf {
 			int firstempty=0;
 			//searches for the first empty element in the specified column
 			for(int i = 0; i < matrix.length; i++){
-			    if(this.matrix[i][column].equals(null)) {
+			    if(this.matrix[i][column].equals(Tile.EMPTY)) {
 			    	firstempty=i;
 			    }
 			}
