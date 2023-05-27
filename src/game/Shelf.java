@@ -75,7 +75,7 @@ public class Shelf {
 	 * a method that fills the column with the tiles passed
 	 * @param column
 	 * @param tiles
-	 * @return true if the filling of column has done successfully  false
+	 * @return true if the filling of column has been done successfully  false
 	 */
 	public boolean fillColumn(int column, ArrayList<Tile> tiles) {
 		if(isPlaceable(column,tiles.size())) {
@@ -98,7 +98,7 @@ public class Shelf {
 	
 	/**
 	 * 
-	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. in the second element we have the number of tiles
+	 * @return an array of two positions, in the first element we have the column with the maximum number of empty cells. in the second element we have the number of empty tiles if it is smaller than 3.
 	 */
 	public int[] nMaxTiles() {
 		int cont=0;
@@ -110,6 +110,9 @@ public class Shelf {
 				colCon[1] = cont;
 			}
 		}
+		if(colCon[1] > 3) {
+    		colCon[1] = 3;
+    	}
 		return colCon;
 	}
 	
@@ -128,7 +131,7 @@ public class Shelf {
 	    		discovered[i][j]=false;
 	    	}
 	    }
-	    Tile [] tile = new Tile[] {Tile.CATS,Tile.BOOKS,Tile.FRAMES,Tile.GAMES,Tile.PLANTS,Tile.TROPHIES};// an array that contain all the types of tile
+	    Tile [] tile = new Tile[] {Tile.CATS,Tile.BOOKS,Tile.FRAMES,Tile.GAMES,Tile.PLANTS,Tile.TROPH};// an array that contain all the types of tile
 	    for(int i=0;i<tile.length;i++) {//a loop that repeat the following operations for all type of tile
 	    	for (int j = 0; j < matrix.length; j++) {
 		        for (int k = 0; k < matrix[j].length; k++) {
