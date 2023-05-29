@@ -26,33 +26,32 @@ public class CommonGoal5 extends Goal{
 		boolean isValidCol;
 		Tile currentTile;
 		shelf = currentPlayer.getShelf();
-		tileTypes = new HashSet<>();
-		cols = shelf.length; //controlla
-		rows = shelf[0].length;//controlla
+		cols = shelf.length; 
+		rows = shelf[0].length;
 		isValidCol = true;
 
 		//check each column
 		for(int i = 0; i < cols; i++) {
-			tileTypes = new HashSet<>();
+			tileTypes = new HashSet<Tile>();
 			isValidCol = true;
 			//check each row in the current column
 			for(int j = 0; j < rows && isValidCol; i++) {
-				currenTile = shelf[i][j];
-				if(!currentTile.equals(Tile.EMPTY) || tileTypes.size()<2) {//If the row has one or more empty tiles, is not valid.
+				currentTile = shelf[i][j];
+				if(!currentTile.equals(Tile.EMPTY) || tileTypes.size()<7) {//If the row has one or more empty tiles, is not valid.
 					tileTypes.add(currentTile);
 				}else {
 					isValidCol = false;
 				}
 				
 			}
-			if(isValidCol) {
+			if(isValidCol && tileTypes.size()==6) {
 				validCols++;
 			}
 			
 		}
 		
 		//check if the goal was reached
-		if(validCols > 5) {
+		if(validCols > 1) {
 			if(super.notCompletedYet(currentPlayer, hasCompletedID)) {
 				return super.pointsMethod();
 			}
