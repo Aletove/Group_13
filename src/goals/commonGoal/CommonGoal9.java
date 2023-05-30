@@ -3,8 +3,6 @@ import game.*;
 import goals.*;
 import java.util.*;
 
-import Game.Tile;
-
 public class CommonGoal9 extends Goal{
 	private ArrayList<Integer> hasCompletedID;
 	private static final int [][] XDIRECTIONS = {//directions to use, assuming that the element is in the center of the shape.
