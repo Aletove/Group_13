@@ -1,4 +1,4 @@
-package Objectives.commonObj;
+package goals.commonGoal;
 import game.*;
 import goals.*;
 import java.util.*;
@@ -32,7 +32,7 @@ public class CommonGoal9 extends Goal{
 		shelf = currentPlayer.getShelf();
 		rows = shelf.length;
 		cols = shelf[0].length;
-		int cont = 0;
+		int cont = 1;
 		
 		 // Iterate through all the cells of the shelf
         for (int i = 0; i < rows; i++) {
@@ -55,7 +55,7 @@ public class CommonGoal9 extends Goal{
             	}
             	
             	//cont to 0 for new check 
-            	cont = 0;
+            	cont = 1;
             	
                 }
             }
