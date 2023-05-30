@@ -4,7 +4,7 @@ import game.*;
 import goals.*;
 import java.util.*;
 
-public class CommonGoal10 extends Goal {
+public class CommonGoal11 extends Goal {
 	private ArrayList<Integer> hasCompletedID;
 
 	/**
@@ -13,15 +13,16 @@ public class CommonGoal10 extends Goal {
 	 * 
 	 * @param nPlayers
 	 */
-	public CommonGoal10(int nPlayers) {
+	public CommonGoal11(int nPlayers) {
 		super(nPlayers);
 		hasCompletedID = new ArrayList<Integer>();
 	}
 
 	/**
-	 * This method verifies that the CommonObj10 is completed the objective is
-	 * completed if there are eight tiles of the same type. There are no
-	 * restrictions on the position of these tiles.
+	 * This method verifies that the CommonObj11 is completed the objective is
+	 * completed if five columns of increasing or decreasing height: starting with
+	 * the first column on the left or right, each following column should contain
+	 * one more tile. The tiles may be of any type.
 	 */
 	@Override
 	public int isCompleted(Player currentPlayer) {
@@ -30,40 +31,41 @@ public class CommonGoal10 extends Goal {
 		int rows, cols;
 		rows = shelf.length;
 		cols = shelf[0].length;
+		int previousCount = 0;
+		int currentCount = 0;
+		boolean isAscending = false;
+		boolean isDescending = false;
 
-		if (this.NumberOfFilledCells(shelf) > 7) { // check if there are at least 8 tiles
-			for (Tile targetType : Tile.values()) { // counts for each type of tiles
-				int count = 0; // reset the counter
-				// Iterate through all the cells of the shelf
-				for (int i = 0; i < rows; i++) {
-					for (int j = 0; j < cols; j++) {
-						if (targetType.equals(shelf[i][j]) && !targetType.equals(Tile.EMPTY)) {
-							count++;
-						}
-						if (count > 7) {
-							if (super.notCompletedYet(currentPlayer, hasCompletedID)) {
-								return super.pointsMethod();
-							}
-						}
-					}
+		for (int j = 0; j < cols; j++) { // The following cycles verify player's shelf
+			for (int i = 0; i < rows; i++) {
+				if (shelf[i][j].equals(Tile.EMPTY)) { // this condition sums the empty cells in a column
+					currentCount++;
 				}
+			}
+			// on the difference between the sum of empty cells of two adjacent columns I
+			// can determine if the condition of increasing or decreasing is verified
+			if (previousCount != 0) {
+				if ((previousCount - currentCount) == 1 && isDescending == false) {
+					isAscending = true;
+				} else if ((previousCount - currentCount) == -1 && isAscending == false) {
+					isDescending = true;
+				} else { // gets into this condition if it is neither increasing nor decreasing (e.g.
+							// pyramid shape)
+					isDescending = false;
+					isAscending = false;
+					break;
+				}
+			}
+			previousCount = currentCount;
+			currentCount = 0; // at the end of the iteration resets the variable
+		}
+
+		if (isDescending == true || isAscending == true) {
+			if (super.notCompletedYet(currentPlayer, hasCompletedID)) {
+				return super.pointsMethod();
 			}
 		}
 		return 0;
 	}
-	/**
-	 * @param matrix
-	 * @return the number of not empty cells on the shelf
-	 */
-	public int NumberOfFilledCells(Tile[][] matrix) { // check if there are at least 8 tiles
-		int count = 0;
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				if (matrix[i][j] != Tile.EMPTY) {
-					count++;
-				}
-			}
-		}
-		return count;
-	}
+
 }
