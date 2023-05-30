@@ -27,9 +27,10 @@ public class CommonGoal6 extends Goal{
 	public int isCompleted(Player currentPlayer) {
 		Tile[][] shelf;
 		int rows, cols;
-		Set<String> foundGroups;
+		int cont = 0;
+		Set<String> currentGroup = new HashSet<>(); // Current group of Tiles
+		Set<String> foundGroups = new HashSet<>(); //found tiles
 		shelf = currentPlayer.getShelf();
-		foundGroups = new HashSet<>();
 		rows = shelf.length;
 		cols = shelf[0].length;
 		 // Iterate through all the cells of the shelf
@@ -37,20 +38,30 @@ public class CommonGoal6 extends Goal{
             for (int j = 0; j < cols; j++) {
                
             	Tile targetType = shelf[i][j]; // Tile type that we are looking for
-                    
-            	Set<String> currentGroup = new HashSet<>(); // Current group of Tiles
-                    
-            	// Executes findAdjacent to find the group of adjacent tiles of the same type forming a 2x2 square
-                findAdjacent(shelf, i, j, targetType, currentGroup);
-                // If the group is formed by four tiles, we store it in the set foundGroups
-                if (currentGroup.size() == 4) {
-                	foundGroups.addAll(currentGroup);
-                   	System.out.println("Group found: " + currentGroup);
-                }
+		    
+		currentGroup.clear();// Clears the current group of Tiles from all added elements before
+                
+		if(!targetType.equals(Tile.EMPTY)) {
+            		// Executes findAdjacent to find the group of adjacent tiles of the same type forming a 2x2 square
+                	findAdjacent(shelf, i, j, targetType, currentGroup, foundGroups);
+			
+			// Explore adjacent tiles
+            		for (int[] direction : SQUAREDIRECTIONS) {
+            			int newRow = i + direction[0];
+            			int newCol = j + direction[1];
+            	            
+            			findAdjacent(shelf, newRow, newCol, targetType, currentGroup, foundGroups);
+            		}
+                	// If the group is formed by four tiles, we store it in the set foundGroups
+                	if (currentGroup.size() == 4) {
+                		foundGroups.addAll(currentGroup);
+                   		cont ++;
+                	}
+		}
             }
         }
         
-        if(foundGroups.size() >= 2) {
+        if(cont >= 2) {
         	if(super.notCompletedYet(currentPlayer, hasCompletedID)) {
         		return super.pointsMethod();
         	}
@@ -68,7 +79,7 @@ public class CommonGoal6 extends Goal{
 	 * @param targetType (e.g. Tile.CATS)
 	 * @param currentGroup Set of strings containing the current group of tiles
 	 */
-	private void findAdjacent(Tile[][] grid, int row, int col, Tile targetType, Set<String> currentGroup) {
+	private void findAdjacent(Tile[][] grid, int row, int col, Tile targetType, Set<String> currentGroup, Set<String> foundGroups) {
 		int rows = grid.length;
 		int cols = grid[0].length;
 	        
@@ -80,19 +91,11 @@ public class CommonGoal6 extends Goal{
 		String position = row + "-" + col; //the format of the position is the same in all the groups
 	        
 		// Check if the tile has already been found
-		if (currentGroup.contains(position)) {
+		if (foundGroups.contains(position)) {
 			return;
 		}
 		
 		currentGroup.add(position);
-	        
-		// Explore adjacent tiles
-		for (int[] direction : SQUAREDIRECTIONS) {
-			int newRow = row + direction[0];
-			int newCol = col + direction[1];
-	            
-			findAdjacent(grid, newRow, newCol, targetType, currentGroup);
-		}
 	}
 
 	
