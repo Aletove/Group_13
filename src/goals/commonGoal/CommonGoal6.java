@@ -72,12 +72,12 @@ public class CommonGoal6 extends Goal{
 	
 	
 	/**
-	 * this method uses an implementation of Depth - first research to find groups of adjacent tiles
 	 * @param grid the shelf used in the method
 	 * @param row x coordinate of the tile
 	 * @param col y coordinate of the tile
 	 * @param targetType (e.g. Tile.CATS)
 	 * @param currentGroup Set of strings containing the current group of tiles
+	 * @param foundGroups Set of strings containing the found tiles
 	 */
 	private void findAdjacent(Tile[][] grid, int row, int col, Tile targetType, Set<String> currentGroup, Set<String> foundGroups) {
 		int rows = grid.length;
