@@ -30,7 +30,7 @@ public class CommonGoal9 extends Goal{
 		shelf = currentPlayer.getShelf();
 		rows = shelf.length;
 		cols = shelf[0].length;
-		int cont = 1;
+		int cont = 1; //cont init to 1 because targettyle already counted
 		
 	// Iterate through all the cells of the shelf
         for (int i = 0; i < rows; i++) {
@@ -55,7 +55,7 @@ public class CommonGoal9 extends Goal{
             		}
 		}
             	
-            	//cont to 0 for new check 
+            	//cont to 1 for new check 
             	cont = 1;
             	
                 }
