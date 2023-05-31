@@ -32,13 +32,14 @@ public class CommonGoal9 extends Goal{
 		cols = shelf[0].length;
 		int cont = 1;
 		
-		 // Iterate through all the cells of the shelf
+	// Iterate through all the cells of the shelf
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                
             	Tile targetType = shelf[i][j]; // Tile type that we are looking for
-            	
+            	//check if targetType is empty
 		if(!targetType.equals(Tile.EMPTY)) {
+			//looping all directions 
             		for (int[] direction : XDIRECTIONS) {
             				int newRow = i + direction[0];
             				int newCol = j + direction[1];
