@@ -38,19 +38,21 @@ public class CommonGoal9 extends Goal{
                
             	Tile targetType = shelf[i][j]; // Tile type that we are looking for
             	
-            	for (int[] direction : XDIRECTIONS) {
-            			int newRow = i + direction[0];
-            			int newCol = j + direction[1];
-            			if (newRow >= 0 && newRow < 6 && newCol >= 0 && newCol < 5) {
-            				if(targetType.equals(shelf[newRow][newCol])) {
-            					cont++;
-            					//checking if there are 5 Tiles forming an X
-            					if(cont == 5 && super.notCompletedYet(currentPlayer, hasCompletedID)) {
-            						return super.pointsMethod();
+		if(!targetType.equals(Tile.EMPTY)) {
+            		for (int[] direction : XDIRECTIONS) {
+            				int newRow = i + direction[0];
+            				int newCol = j + direction[1];
+            				if (newRow >= 0 && newRow < 6 && newCol >= 0 && newCol < 5) {
+            					if(targetType.equals(shelf[newRow][newCol])) {
+            						cont++;
+            						//checking if there are 5 Tiles forming an X
+            						if(cont == 5 && super.notCompletedYet(currentPlayer, hasCompletedID)) {
+            							return super.pointsMethod();
+            						}
             					}
             				}
-            			}
-            	}
+            		}
+		}
             	
             	//cont to 0 for new check 
             	cont = 1;
