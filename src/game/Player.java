@@ -7,7 +7,7 @@ public class Player {
 	private String name;
 	private final int id;
 	private Tile [][] pGoal;
-	private int cGoalPoints;
+	private int points;
 	private boolean isFirst;
 	private Shelf pShelf;
 
@@ -24,7 +24,7 @@ public class Player {
 		this.pShelf = new Shelf();
 		this.name = name;
 		this.pGoal = pGoal;
-		cGoalPoints = 0;
+		points = 0;
 	}
 
 	/**
@@ -45,18 +45,18 @@ public class Player {
 	public boolean isFirst() {
 		return isFirst;
 	}
-	public int getCGoalPoints() {
-		return cGoalPoints;
+	public int getPoints() {
+		return points;
 	}
 
-	public void setCGoalPoints(int cGoalPoints) {
-		this.cGoalPoints = cGoalPoints;
+	public void setPoints(int cGoalPoints) {
+		this.points = cGoalPoints;
 	}
 
 	public int totalPoints() {
 		int total = 0;
 		total += pGoalPoints();
-		total += cGoalPoints;
+		total += points;
 		total += pShelf.adjacentTilesScore();
 		return total;
 	}
