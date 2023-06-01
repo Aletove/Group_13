@@ -34,8 +34,9 @@ public class CommonGoal7 extends Goal {
 		//check each column in the current row
 		for(int j = 0; j < cols && isValidRow; j++) {
 			currentTile = shelf[i][j];
-			if(!currentTile.equals(Tile.EMPTY) || tileTypes.size()<6) {//If the row has one or more empty tiles, is not valid.
-				tileTypes.add(currentTile);
+			if(!currentTile.equals(Tile.EMPTY)) {//If the row has one or more empty tiles, is not valid.
+				if(!tileTypes.add(currentTile)) {
+				}
 			}else {
 				isValidRow = false;
 			}
@@ -49,7 +50,7 @@ public class CommonGoal7 extends Goal {
 		if(super.notCompletedYet(currentPlayer, hasCompletedID)) {
 			return super.pointsMethod();
 		}
-		System.out.println("Goal reached");
+		System.out.println("Goal reached"); //Goal reached, two rows each made up of five different types of tiles
 	}
 	return 0;
 }
