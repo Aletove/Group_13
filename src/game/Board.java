@@ -64,6 +64,15 @@ public class Board {
         }
         return true;
     }
+    public boolean isPickable(int row, int col) {
+        if(!findAdjacent(row, col)){
+            if(row < 0 || row > 8 || col < 0 || col > 8){
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 
     /**
      * the method automatically makes the calls to the methods to fill the board
