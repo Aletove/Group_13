@@ -32,5 +32,8 @@ public class CommonGoal4 extends Goal{
 		return 0;
 	}
 	
-
+	public String getDescription() {
+		return "Four tiles of the same type in the four corners of the bookshelf.";
+	}
+	
 }

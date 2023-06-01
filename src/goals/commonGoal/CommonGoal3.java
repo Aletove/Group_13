@@ -63,5 +63,11 @@ public class CommonGoal3 extends Goal{
         }
         return 0;
 	}
+	
+	public String getDescription() {
+		return "Four lines each formed by 5 tiles of maximum three different types. \r\n"
+				+ "One line can show the same or a different combination of another line ";
+	}
+
 
 }

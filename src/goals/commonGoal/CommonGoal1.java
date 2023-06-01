@@ -68,6 +68,10 @@ public class CommonGoal1 extends Goal{
 		
 		return 0;
 	}
+
+	public String getDescription() {
+		return "Five tiles of the same type forming a diagonal.";
+	}
 	
 
 }
