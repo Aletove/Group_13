@@ -35,7 +35,7 @@ public class CommonGoal5 extends Goal{
 			tileTypes = new HashSet<Tile>();
 			isValidCol = true;
 			//check each row in the current column
-			for(int j = 0; j < rows && isValidCol; i++) {
+			for(int j = 0; j < rows && isValidCol; j++) {
 				currentTile = shelf[i][j];
 				if(!currentTile.equals(Tile.EMPTY) || tileTypes.size()<7) {//If the row has one or more empty tiles, is not valid.
 					tileTypes.add(currentTile);
