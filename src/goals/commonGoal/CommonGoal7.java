@@ -31,6 +31,8 @@ public class CommonGoal7 extends Goal{
 		}
 		return 0;
 	}
-	
+	public String getDescription() {
+		return "Two lines each formed by 5 different types of tiles. One line can show the same or a different combination of the other line";
+	}
 
 }

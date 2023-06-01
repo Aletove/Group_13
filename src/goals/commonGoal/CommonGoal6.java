@@ -31,6 +31,8 @@ public class CommonGoal6 extends Goal{
 		}
 		return 0;
 	}
-	
+	public String getDescription() {
+		return "Two groups each containing 4 tiles of the same type in a 2x2 square. The tiles of one square can be different from those of the other square";
+	}
 
 }
