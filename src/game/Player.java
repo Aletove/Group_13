@@ -7,7 +7,7 @@ public class Player {
 	private String name;
 	private final int id;
 	private Tile [][] pGoal;
-	private int cGoalPoints;
+	private int points;
 	private boolean isFirst;
 	private Shelf pShelf;
 
@@ -24,54 +24,43 @@ public class Player {
 		this.pShelf = new Shelf();
 		this.name = name;
 		this.pGoal = pGoal;
-		cGoalPoints = 0;
+		points = 0;
 	}
 
 	/**
-	 * @return id
+	 * 
+	 * @return
 	 */
 	public int getId() {
 		return this.id;
 	}
-	/**
-	 * @return name
-	 */
+
 	public String getName() {
 		return this.name;
 	}
-	
-	/**
-	 * @param isFirst
-	 * it verifies id
-	 */
+
 	public void setIsFirst(boolean isFirst) {
 		this.isFirst = isFirst;
 	}
 	public boolean isFirst() {
 		return isFirst;
 	}
-	public int getCGoalPoints() {
-		return cGoalPoints;
+	public int getPoints() {
+		return points;
 	}
-	/**
-	 * @param cGoalPoints
-	 */
-	public void setCGoalPoints(int cGoalPoints) {
-		this.cGoalPoints = cGoalPoints;
+
+	public void setPoints(int cGoalPoints) {
+		this.points = cGoalPoints;
 	}
-	/**
-	 * @return total goal score 
-	 */
+
 	public int totalPoints() {
 		int total = 0;
 		total += pGoalPoints();
-		total += cGoalPoints;
+		total += points;
 		total += pShelf.adjacentTilesScore();
 		return total;
 	}
-	/**
-	 * @return personal goal score 
-	 */
+
 	private int pGoalPoints() {
 		Tile[][] matrix = pShelf.getShelf();
 		int rows = matrix.length;
@@ -110,6 +99,7 @@ public class Player {
 		return points;
 	}
 	/**
+	 * 
 	 * @return true if the shelf is full
 	 */
 	public boolean checkShelf() {
@@ -117,7 +107,8 @@ public class Player {
 	}
 	
 	/**
-	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. In the second element we have the number of tiles
+	 * 
+	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. in the second element we have the number of tiles
 	 */
 	public int[] nMaxTiles() {
 		return pShelf.nMaxTiles();
@@ -132,16 +123,11 @@ public class Player {
 	public boolean fillShelfColumn(int col, ArrayList<Tile> tiles) {
 		return pShelf.fillColumn(col,tiles);
 	}
-	
-	/**
-	 * @return player's shelf
-	 */
+
 	public Tile[][] getShelf() {
 		return pShelf.getShelf();
 	}
-	/**
-	 * @return print player's shelf
-	 */
+
 	public String printShelf() {
 		return pShelf.toString();
 	}
