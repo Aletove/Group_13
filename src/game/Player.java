@@ -12,7 +12,6 @@ public class Player {
 	private Shelf pShelf;
 
 	/**
-	 * @author Maria Lamara
 	 * The constructor define player
 	 * @param id player
 	 * @param name player
@@ -28,27 +27,38 @@ public class Player {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return player's Id
 	 */
 	public int getId() {
 		return this.id;
 	}
-
+	/**
+	 * @return player's name
+	 */
 	public String getName() {
 		return this.name;
 	}
-
+	/**
+	 * @param isFirst
+	 */
 	public void setIsFirst(boolean isFirst) {
 		this.isFirst = isFirst;
 	}
+	/**
+	 * @return if player is first
+	 */
 	public boolean isFirst() {
 		return isFirst;
 	}
+	/**
+	 * @return player's points
+	 */
 	public int getPoints() {
 		return points;
 	}
-
+	/**
+	 * @param cGoalPoints
+	 */
 	public void setPoints(int cGoalPoints) {
 		this.points = cGoalPoints;
 	}
@@ -60,7 +70,9 @@ public class Player {
 		total += pShelf.adjacentTilesScore();
 		return total;
 	}
-
+	/**
+	 * @return personal goal score 
+	 */
 	private int pGoalPoints() {
 		Tile[][] matrix = pShelf.getShelf();
 		int rows = matrix.length;
@@ -107,8 +119,7 @@ public class Player {
 	}
 	
 	/**
-	 * 
-	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. in the second element we have the number of tiles
+	 * @return an array of two positions, in the first element we have the column with the maxinum number of empty cells. In the second element we have the number of tiles
 	 */
 	public int[] nMaxTiles() {
 		return pShelf.nMaxTiles();
@@ -123,11 +134,15 @@ public class Player {
 	public boolean fillShelfColumn(int col, ArrayList<Tile> tiles) {
 		return pShelf.fillColumn(col,tiles);
 	}
-
+	/**
+	 * @return player's shelf
+	 */
 	public Tile[][] getShelf() {
 		return pShelf.getShelf();
 	}
-
+	/**
+	 * @return print player's shelf
+	 */
 	public String printShelf() {
 		return pShelf.toString();
 	}
