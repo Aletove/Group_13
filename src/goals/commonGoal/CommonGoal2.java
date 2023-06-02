@@ -37,4 +37,8 @@ public class CommonGoal2 extends Goal{
 		
 		return 0;
 	}
+	public String getDescription() {
+		return "Four groups each containing at least 4 tiles of the same type. \r\n"
+				+ "The tiles of one group can be different from those of another group";
+	}
 }

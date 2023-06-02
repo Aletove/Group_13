@@ -39,7 +39,7 @@ public class Bag {
 			tileBooks.add(Tile.BOOKS);
 			tileGames.add(Tile.GAMES);
 			tileFrames.add(Tile.FRAMES);
-			tileTrophies.add(Tile.TROPHIES);
+			tileTrophies.add(Tile.TROPH);
 			tilePlants.add(Tile.PLANTS);
 		}
 		
@@ -60,27 +60,35 @@ public class Bag {
 		Tile tiles = Tile.EMPTY; 
 		switch (list) {
 		case 0:
-			tiles = tileCats.remove(0);
-			
+			if(!tileCats.isEmpty()) {
+				tiles = tileCats.remove(0);
+			}
 			break;
 		case 1: 
-			tiles = tileBooks.remove(0);
-			
+			if(!tileBooks.isEmpty()) {
+				tiles = tileBooks.remove(0);
+			}			
 			break;
 		case 2: 
-			tiles = tileGames.remove(0);
-			
+			if(!tileGames.isEmpty()) {
+				tiles = tileGames.remove(0);
+			}			
 			break;
 		case 3:
-			tiles = tileFrames.remove(0);
-			
+			if(!tileFrames.isEmpty()) {
+				tiles = tileFrames.remove(0);
+			}				
 			break;
 		case 4: 
-			tiles = tileTrophies.remove(0);
+			if(!tileTrophies.isEmpty()) {
+				tiles = tileTrophies.remove(0);
+			}	
 			
 			break;
 		case 5: 
-			tiles = tilePlants.remove(0);
+			if(!tilePlants.isEmpty()) {
+				tiles = tilePlants.remove(0);
+			}	
 			
 			break;
 

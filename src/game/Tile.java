@@ -6,7 +6,7 @@ public enum Tile {
 	BOOKS,
 	GAMES,
 	FRAMES,
-	TROPHIES,
+	TROPH,
 	PLANTS,
 	EMPTY
 }
