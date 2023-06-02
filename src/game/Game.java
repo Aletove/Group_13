@@ -52,6 +52,7 @@ public class Game {
             index = rand.nextInt(pGoalsTypes.size()); //Chooses a random index in the pGoalsTypes
             name = sc.next();
             playerList.add(new Player(nPlayers, name, pGoalsTypes.remove(index).getGoal())); //new istance of player added to playerList
+            nPlayers++;
             if (nPlayers > 0 && nPlayers < 4) {
                 System.out.println("Would you like to add another player?");
                 System.out.println("Yes or no?");
@@ -60,10 +61,12 @@ public class Game {
                     //System.out.println(nPlayers);
                 }
             }
+            else{
+                stop = true;
+            }
 
-            nPlayers++;
             //System.out.println(nPlayers);
-        } while (nPlayers < 5 && !stop);
+        } while (nPlayers < 4 && !stop);
 
         matchBoard = new Board(nPlayers);
 
