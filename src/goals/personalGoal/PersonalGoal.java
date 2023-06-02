@@ -9,21 +9,21 @@ public enum PersonalGoal{
 		{Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.BOOKS,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.GAMES, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
-		{Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY, Tile.EMPTY,},
+		{Tile.EMPTY, Tile.EMPTY, Tile.TROPH, Tile.EMPTY, Tile.EMPTY,},
 	}),
 	GOAL1(new Tile[][] {
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY, Tile.PLANTS, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.CATS,Tile.EMPTY,Tile.GAMES,Tile.EMPTY,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.GAMES, Tile.EMPTY, Tile.EMPTY, Tile.BOOKS,},
-		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY},
+		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.TROPH, Tile.EMPTY},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.FRAMES,},
 	}),
 	GOAL2(new Tile[][] {
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.FRAMES, Tile.EMPTY, Tile.EMPTY, Tile.GAMES, Tile.EMPTY},
 		{Tile.EMPTY,Tile.EMPTY,Tile.PLANTS,Tile.EMPTY,Tile.EMPTY,},
-		{Tile.EMPTY,Tile.CATS, Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES,},
+		{Tile.EMPTY,Tile.CATS, Tile.EMPTY, Tile.EMPTY, Tile.TROPH,},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.BOOKS, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
 	}),
@@ -31,20 +31,20 @@ public enum PersonalGoal{
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.GAMES},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,},
-		{Tile.EMPTY,Tile.CATS, Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES,},
+		{Tile.EMPTY,Tile.CATS, Tile.EMPTY, Tile.EMPTY, Tile.TROPH,},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.BOOKS, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
 	}),
 	GOAL4(new Tile[][] {
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
-		{Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
+		{Tile.EMPTY, Tile.TROPH, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.FRAMES, Tile.BOOKS, Tile.EMPTY, Tile.EMPTY,},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.PLANTS},
 		{Tile.GAMES, Tile.EMPTY, Tile.EMPTY, Tile.CATS, Tile.EMPTY,},
 	}),
 	GOAL5(new Tile[][] {
-		{Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY, Tile.CATS},
+		{Tile.EMPTY, Tile.EMPTY, Tile.TROPH, Tile.EMPTY, Tile.CATS},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.BOOKS,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
@@ -55,14 +55,14 @@ public enum PersonalGoal{
 		{Tile.CATS, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.FRAMES, Tile.EMPTY},
 		{Tile.EMPTY,Tile.PLANTS,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,},
-		{Tile.TROPHIES,Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
+		{Tile.TROPH,Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.GAMES},
 		{Tile.EMPTY, Tile.EMPTY, Tile.BOOKS, Tile.EMPTY, Tile.EMPTY,},
 	}),
 	GOAL7(new Tile[][] {
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.FRAMES},
 		{Tile.EMPTY, Tile.CATS, Tile.EMPTY, Tile.FRAMES, Tile.EMPTY},
-		{Tile.EMPTY,Tile.EMPTY,Tile.TROPHIES,Tile.EMPTY,Tile.EMPTY,},
+		{Tile.EMPTY,Tile.EMPTY,Tile.TROPH,Tile.EMPTY,Tile.EMPTY,},
 		{Tile.PLANTS,Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.BOOKS, Tile.EMPTY},
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.GAMES, Tile.EMPTY,},
@@ -72,11 +72,11 @@ public enum PersonalGoal{
 		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.FRAMES, Tile.EMPTY},
 		{Tile.EMPTY,Tile.EMPTY,Tile.CATS,Tile.EMPTY,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.BOOKS,},
-		{Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY, Tile.EMPTY, Tile.PLANTS},
+		{Tile.EMPTY, Tile.TROPH, Tile.EMPTY, Tile.EMPTY, Tile.PLANTS},
 		{Tile.FRAMES, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY,},
 	}),
 	GOAL9(new Tile[][] {
-		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES},
+		{Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY, Tile.TROPH},
 		{Tile.EMPTY, Tile.GAMES, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.BOOKS,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.EMPTY, Tile.EMPTY, Tile.CATS, Tile.EMPTY,},
@@ -89,23 +89,26 @@ public enum PersonalGoal{
 		{Tile.GAMES,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,Tile.EMPTY,},
 		{Tile.EMPTY,Tile.EMPTY, Tile.FRAMES, Tile.EMPTY, Tile.EMPTY,},
 		{Tile.EMPTY, Tile.FRAMES, Tile.EMPTY, Tile.EMPTY, Tile.CATS},
-		{Tile.FRAMES, Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY,},
+		{Tile.FRAMES, Tile.EMPTY, Tile.EMPTY, Tile.TROPH, Tile.EMPTY,},
 	}),
 	GOAL11(new Tile[][] {
 		{Tile.EMPTY, Tile.EMPTY, Tile.BOOKS, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY, Tile.PLANTS, Tile.EMPTY, Tile.EMPTY, Tile.EMPTY},
 		{Tile.EMPTY,Tile.EMPTY,Tile.FRAMES,Tile.EMPTY,Tile.EMPTY,},
-		{Tile.EMPTY,Tile.EMPTY, Tile.EMPTY, Tile.TROPHIES, Tile.EMPTY,},
+		{Tile.EMPTY,Tile.EMPTY, Tile.EMPTY, Tile.TROPH, Tile.EMPTY,},
 		{Tile.EMPTY, Tile.FRAMES, Tile.EMPTY, Tile.EMPTY, Tile.GAMES},
 		{Tile.CATS, Tile.EMPTY, Tile.EMPTY, Tile.PLANTS, Tile.EMPTY,},
 	}),;
-
-	PersonalGoal(Tile[][] tiles) {
-		
+	
+	private Tile[][] matrix;
+	PersonalGoal(Tile[][] matrix) {
+		this.matrix = matrix;
 	}
 	
 	
-
+	public Tile[][] getGoal(){
+		return matrix;
+	}
 	
 
 }
