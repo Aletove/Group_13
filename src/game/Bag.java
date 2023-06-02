@@ -13,12 +13,11 @@ public class Bag {
 	private ArrayList<Tile> tileBooks;
 	private ArrayList<Tile> tileGames;
 	private ArrayList<Tile> tileFrames;
-	private ArrayList<Tile> tileTroph;
+	private ArrayList<Tile> tileTrophies;
 	private ArrayList<Tile> tilePlants;
 	
 	/**
-	 * Constructs a Bag object
-	 * @author Giuseppe Luisi
+	 * Constructs a Bag object		 
 	 */
 	public Bag() { 
 		/**
@@ -28,7 +27,7 @@ public class Bag {
 		tileBooks = new ArrayList<Tile>();
 		tileGames = new ArrayList<Tile>();
 		tileFrames = new ArrayList<Tile>();
-		tileTroph = new ArrayList<Tile>();
+		tileTrophies = new ArrayList<Tile>();
 		tilePlants = new ArrayList<Tile>();
 		
 		/**
@@ -40,7 +39,7 @@ public class Bag {
 			tileBooks.add(Tile.BOOKS);
 			tileGames.add(Tile.GAMES);
 			tileFrames.add(Tile.FRAMES);
-			tileTroph.add(Tile.TROPH);
+			tileTrophies.add(Tile.TROPH);
 			tilePlants.add(Tile.PLANTS);
 		}
 		
@@ -61,27 +60,35 @@ public class Bag {
 		Tile tiles = Tile.EMPTY; 
 		switch (list) {
 		case 0:
-			tiles = tileCats.remove(0);
-			
+			if(!tileCats.isEmpty()) {
+				tiles = tileCats.remove(0);
+			}
 			break;
 		case 1: 
-			tiles = tileBooks.remove(0);
-			
+			if(!tileBooks.isEmpty()) {
+				tiles = tileBooks.remove(0);
+			}			
 			break;
 		case 2: 
-			tiles = tileGames.remove(0);
-			
+			if(!tileGames.isEmpty()) {
+				tiles = tileGames.remove(0);
+			}			
 			break;
 		case 3:
-			tiles = tileFrames.remove(0);
-			
+			if(!tileFrames.isEmpty()) {
+				tiles = tileFrames.remove(0);
+			}				
 			break;
 		case 4: 
-			tiles = tileTroph.remove(0);
+			if(!tileTrophies.isEmpty()) {
+				tiles = tileTrophies.remove(0);
+			}	
 			
 			break;
 		case 5: 
-			tiles = tilePlants.remove(0);
+			if(!tilePlants.isEmpty()) {
+				tiles = tilePlants.remove(0);
+			}	
 			
 			break;
 
