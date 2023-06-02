@@ -12,7 +12,7 @@ public class Game {
     private ArrayList<PersonalGoal> pGoalsTypes;
     private Board matchBoard;
     private int nPlayers;
-    private int firstEndedPoint = 1;
+    private int firstEndedPoint;
     private final Scanner sc = new Scanner(System.in);
 
     
@@ -24,6 +24,7 @@ public class Game {
         playerList = new ArrayList<Player>();
         commonGoals = new ArrayList<Goal>();
         pGoalsTypes = new ArrayList<PersonalGoal>();
+        firstEndedPoint  = 1;
 
     }
 
@@ -69,6 +70,7 @@ public class Game {
         //Initializing all the 12 commonGoals, to be able to choose randomly later.
         allCommonGoals.add(new CommonGoal0(nPlayers));
         allCommonGoals.add(new CommonGoal1(nPlayers));
+        /*allCommonGoals.add(new CommonGoal2(nPlayers));
         allCommonGoals.add(new CommonGoal3(nPlayers));
 	allCommonGoals.add(new CommonGoal4(nPlayers));
 	allCommonGoals.add(new CommonGoal5(nPlayers));
@@ -77,7 +79,7 @@ public class Game {
 	allCommonGoals.add(new CommonGoal8(nPlayers));
 	allCommonGoals.add(new CommonGoal9(nPlayers));
 	allCommonGoals.add(new CommonGoal10(nPlayers));
-	allCommonGoals.add(new CommonGoal11(nPlayers));
+	allCommonGoals.add(new CommonGoal11(nPlayers));*/
         //mixes up all the common goals
         Collections.shuffle(allCommonGoals);
         System.out.println("Is this your first game and would like to use just a common goal, instead of two?");
@@ -104,17 +106,15 @@ public class Game {
     public void initGame(ArrayList<String> playerNames, boolean oneGoal) {
         int index;
         Random rand;
-
         String name;
         ArrayList<Goal> allCommonGoals;
         Iterator<String> names = playerNames.iterator();
-
-        
         rand = new Random();
-
         allCommonGoals = new ArrayList<Goal>();
-
+        
         Collections.addAll(pGoalsTypes, PersonalGoal.values());
+        
+        //creating all the player objects
         while(names.hasNext()) {
             index = rand.nextInt(pGoalsTypes.size()); //Chooses a random index in the pGoalsTypes
             name = names.next();
@@ -126,6 +126,7 @@ public class Game {
         //Initializing all the 12 commonGoals, to be able to choose randomly.
         allCommonGoals.add(new CommonGoal0(nPlayers));
         allCommonGoals.add(new CommonGoal1(nPlayers));
+        allCommonGoals.add(new CommonGoal2(nPlayers));
         allCommonGoals.add(new CommonGoal3(nPlayers));
         allCommonGoals.add(new CommonGoal4(nPlayers));
         allCommonGoals.add(new CommonGoal5(nPlayers));
@@ -363,7 +364,7 @@ public class Game {
             printTileArrayList(notSorted);
 
             System.out.println("Insert the number of the tile number " + index);
-            System.out.println("The number must be in between" + 0 + ", included and " + notSorted.size() + " excluded");
+            
             tileIndex = integerInput(0, notSorted.size());
             sortedTiles.add(notSorted.remove(tileIndex));
         }
