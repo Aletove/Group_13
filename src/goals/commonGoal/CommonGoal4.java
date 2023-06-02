@@ -4,6 +4,7 @@ import game.*;
 import goals.*;
 import java.util.*;
 
+
 public class CommonGoal4 extends Goal {
 
     private ArrayList<Integer> hasCompletedID;

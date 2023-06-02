@@ -64,6 +64,15 @@ public class Board {
         }
         return true;
     }
+    public boolean isPickable(int row, int col) {
+        if(!findAdjacent(row, col)){
+            if(row < 0 || row > 8 || col < 0 || col > 8){
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 
     /**
      * the method automatically makes the calls to the methods to fill the board
@@ -118,18 +127,19 @@ public class Board {
     private boolean findAdjacent(int row, int col) {
         int rows = matrix.length;
         int cols = matrix[0].length;
-
         for (int[] direction : DIRECTIONS) {
             int newRow = row + direction[0];
             int newCol = col + direction[1];
-            if (newRow >= 0 || newRow < rows || newCol >= 0 || newCol < cols || matrix[newRow][newCol] == null) {
+            if (newRow <= 0  newRow > rows  newCol <= 0  newCol > cols || matrix[newRow][newCol] == null) {
+                System.out.println("First if");
                 return false; // Found an adjacent tile that is empty, or null
             }
             if (matrix[newRow][newCol].equals(Tile.EMPTY)) {//splitted if to avoid exception when matrix[newRow][newCol] is null
+                System.out.println("Second if");
                 return false;
             }
         }
-
+        
         return true; // Adjacent tiles found
 
     }
