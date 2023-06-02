@@ -15,10 +15,10 @@ public abstract class Goal {
 	 * @param nPlayers
 	 */
 	public Goal(int nPlayers) {
+		points = new Integer[nPlayers];
 		for(int i = 0; i < nPlayers; i++) {
 			points[i]=(i+1)*2;
 		}
-		
 	}
 	/**
 	 * 
@@ -27,8 +27,8 @@ public abstract class Goal {
 	 */
 	public abstract int isCompleted(Player currentPlayer);
 	
-	/**This method verifies that the player ID has not been added to the arraylist "hasCompleted"
-	 * If the player has not completed yet the method add the ID to the arrayliist "hasCompleted"
+	/**This method verifies that the player ID has not been added to the ArrayList "hasCompleted"
+	 * If the player has not completed yet the method add the ID to the ArrayList "hasCompleted"
 	 * 
 	 * @param currentPlayer
 	 * @param hasCompletedID arraylist, contains the players ID that have completed the common objective
