@@ -13,7 +13,7 @@ public class Bag {
 	private ArrayList<Tile> tileBooks;
 	private ArrayList<Tile> tileGames;
 	private ArrayList<Tile> tileFrames;
-	private ArrayList<Tile> tileTrophies;
+	private ArrayList<Tile> tileTroph;
 	private ArrayList<Tile> tilePlants;
 	
 	/**
@@ -27,7 +27,7 @@ public class Bag {
 		tileBooks = new ArrayList<Tile>();
 		tileGames = new ArrayList<Tile>();
 		tileFrames = new ArrayList<Tile>();
-		tileTrophies = new ArrayList<Tile>();
+		tileTroph = new ArrayList<Tile>();
 		tilePlants = new ArrayList<Tile>();
 		
 		/**
@@ -39,7 +39,7 @@ public class Bag {
 			tileBooks.add(Tile.BOOKS);
 			tileGames.add(Tile.GAMES);
 			tileFrames.add(Tile.FRAMES);
-			tileTrophies.add(Tile.TROPHIES);
+			tileTroph.add(Tile.TROPH);
 			tilePlants.add(Tile.PLANTS);
 		}
 		
@@ -76,7 +76,7 @@ public class Bag {
 			
 			break;
 		case 4: 
-			tiles = tileTrophies.remove(0);
+			tiles = tileTroph.remove(0);
 			
 			break;
 		case 5: 
