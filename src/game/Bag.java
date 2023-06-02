@@ -17,7 +17,8 @@ public class Bag {
 	private ArrayList<Tile> tilePlants;
 	
 	/**
-	 * Constructs a Bag object		 
+	 * Constructs a Bag object
+	 * @author Giuseppe Luisi
 	 */
 	public Bag() { 
 		/**
