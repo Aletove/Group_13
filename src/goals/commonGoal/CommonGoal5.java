@@ -59,6 +59,8 @@ public class CommonGoal5 extends Goal{
 		}
 		return 0;
 	}
-	
+	public String getDescription() {
+		return "Two columns each formed by 6 different types of tiles.";
+	}
 
 }

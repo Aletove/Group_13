@@ -55,4 +55,5 @@ public class CommonGoal7 extends Goal {
 	return 0;
 }
 
+
 }

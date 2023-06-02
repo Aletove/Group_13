@@ -68,4 +68,9 @@ public class CommonGoal11 extends Goal {
 		return 0;
 	}
 
+	public String getDescription() {
+		return "Five columns of increasing or decreasing height. Starting from the first column on the left or on the right, each next column must be made of exactly one more tile. Tiles can be of any type. ";
+	}
+
+
 }

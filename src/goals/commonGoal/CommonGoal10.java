@@ -70,5 +70,8 @@ public int NumberOfFilledCells(Tile[][] matrix) { //check if there are at least 
 	return count;
 
 }
+	public String getDescription() {
+		return "Eight tiles of the same type. There’s no restriction about the position of these tiles";
+	}
 
 }
